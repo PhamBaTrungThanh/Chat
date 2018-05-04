@@ -1,8 +1,22 @@
 
-// Body
-$body-bg: #f5f8fa;
-
-// Typography
-$font-family-sans-serif: "Raleway", sans-serif;
-$font-size-base: 0.9rem;
-$line-height-base: 1.6;
+// Set your brand colors
+$purple: #8A4D76;
+$pink: #FA7C91;
+$brown: #757763;
+$beige-light: #D0D1CD;
+$beige-lighter: #EFF0EB;
+$dark-violet: #1B0B35;
+$white-dank: hsl(0, 0, 98%);
+// Update Bulma's global variables
+$family-sans-serif: "Nunito", serif;
+$grey-dark: $brown;
+$grey-light: $beige-light;
+$primary: $purple;
+$link: $pink;
+$body-background-color: $dark-violet;
+$body-color: $white-dank;
+// Update some of Bulma's component variables
+$control-border-width: 2px;
+$input-background-color: $beige-lighter;
+$input-border-color: transparent;
+$input-shadow: none;

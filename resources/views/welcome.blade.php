@@ -1,95 +1,209 @@
-<!doctype html>
-<html lang="{{ app()->getLocale() }}">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-
-        <title>Laravel</title>
-
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
-
-        <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Raleway', sans-serif;
-                font-weight: 100;
-                height: 100vh;
-                margin: 0;
-            }
-
-            .full-height {
-                height: 100vh;
-            }
-
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
-
-            .position-ref {
-                position: relative;
-            }
-
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
-
-            .content {
-                text-align: center;
-            }
-
-            .title {
-                font-size: 84px;
-            }
-
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 12px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
-                        <a href="{{ route('register') }}">Register</a>
-                    @endauth
+@extends('layouts.app')
+@section('headinclude')
+    <link href="{{ mix('css/preloader.css') }}" rel="stylesheet">
+@endsection
+@section('content')
+<div class="wellcome-header">
+    <p class="is-size-3 has-text-centered">Bạn cần đăng nhập để sử dụng trang web</p>
+</div>
+<div id="wellcome">
+    <div class="page">
+        <div class="page-content">
+            <i class="dark-bg"></i>
+            <div class="layers-rock-last">
+                <i class="star-0"></i>
+                <i class="star-1"></i>
+                <i class="star-2"></i>
+                <i class="star-3"></i>
+                <i class="star-4"></i>
+                <i class="star-5"></i>
+                <i class="star-6"></i>
+                <i class="star-7"></i>
+                <i class="star-8"></i>
+                <i class="star-9"></i>
+                <i class="star-10"></i>
+                <i class="star-11"></i>
+                <i class="star-12"></i>
+                <div class="rock rock-1"><i class="dark-bg"></i></div>
+                <div class="rock rock-2"><i class="dark-bg"></i></div>
+                <div class="rock rock-3"><i class="dark-bg"></i></div>
+                <div class="rock rock-4"><i class="dark-bg"></i></div>
+                <div class="rock-bg"><i class="dark-bg"></i></div>
+            </div>
+            <div class="layers-trees-3">
+                <div class="tree-1"><i class="dark-bg"></i></div>
+                <div class="tree-2"><i class="dark-bg"></i></div>
+                <div class="tree-3"><i class="dark-bg"></i></div>
+                <div class="tree-4"><i class="dark-bg"></i></div>
+                <div class="tree-5"><i class="dark-bg"></i></div>
+                <div class="tree-6"><i class="dark-bg"></i></div>
+            </div>
+            <div class="layers-trees-2">
+                <div class="tree-1">
+                    <i class="dark-bg"><i class="i-first"></i><i class="i-second"></i></i>
+                    <i class="i-first"></i><i class="i-second"></i>
                 </div>
-            @endif
-
-            <div class="content">
-                <div class="title m-b-md">
-                    Laravel
+                <div class="tree-2">
+                    <i class="dark-bg"><i class="i-first"></i><i class="i-second"></i></i>
+                    <i class="i-first"></i><i class="i-second"></i>
                 </div>
-
-                <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
+                <div class="tree-3">
+                    <i class="dark-bg"><i class="i-first"></i><i class="i-second"></i></i>
+                    <i class="i-first"></i><i class="i-second"></i>
+                </div>
+                <div class="tree-4">
+                    <i class="dark-bg"><i class="i-first"></i><i class="i-second"></i></i>
+                    <i class="i-first"></i><i class="i-second"></i>
+                </div>
+            </div>
+            <div class="layers-rock-first">
+                <i class="rock-bg"></i>
+                <div class="rock-left-content">
+                    <i class="rock-2">
+                        <i class="rock-top"></i>
+                        <i class="rock-left"></i>
+                    </i>
+                    <i class="rock-1">
+                        <i class="rock-left"></i>
+                        <i class="rock-right"></i>
+                        <i class="rock-center"></i>
+                    </i>
+                    <i class="rock-3">
+                        <i class="rock-left"></i>
+                        <i class="rock-top">
+                            <i class="rock-top-right"></i>
+                        </i>
+                    </i>
+                </div>
+                <div class="rock-right-content">
+                    <i class="rock-1">
+                        <i class="rock-top-back"></i>
+                        <i class="rock-top-front"></i>
+                        <i class="rock-bottom-back"></i>
+                        <i class="rock-bottom-front"></i>
+                    </i>
+                    <i class="rock-2">
+                        <i class="rock-bottom"></i>
+                        <i class="rock-bottom-front"></i>
+                        <i class="rock-top"></i>
+                    </i>
+                </div>
+            </div>
+            <div class="layers-kylo">
+                <div class="kylo">
+                    <div class="kylo-head">
+                        <i class="head-bg"></i>
+                        <i class="head-content"><i class="head-content-mask"></i></i>
+                        <i class="head">
+                            <i class="head-last"></i>
+                            <i class="head-light"></i>
+                            <i class="head-second"></i>
+                            <i class="head-first"></i>
+                            <i class="head-mask">
+                                <i class="head-mask-top"></i>
+                                <i class="head-mask-bottom"><i class="head-mask-bottom-place"></i></i>
+                            </i>
+                        </i>
+                    </div>
+                    <div class="kylo-body-top">
+                        <i class="kylo-body-top-black"></i>
+                        <i class="kylo-body-top-shoulders">
+                            <i class="shoulders-left"></i>
+                            <i class="shoulders-right"></i>
+                        </i>
+                    </div>
+                    <div class="kylo-body-bottom">
+                        <i class="kylo-body-bottom-black"></i>
+                    </div>
+                    <i class="kylo-hand-left">
+                        <i class="hand-arm">
+                            <i class="hand-last">
+                                <i class="hand-finger-right"></i>
+                                <i class="lightsaber">
+                                    <i class="lightsaber-light-bg"></i>
+                                    <i class="lightsaber-cross-content">
+                                        <i class="lightsaber-cross-light">
+                                            <i class="light-item-1"></i>
+                                            <i class="light-item-2"></i>
+                                        </i>
+                                        <i class="lightsaber-cross"></i>
+                                    </i>
+                                    <i class="lightsaber-light">
+                                        <i class="light-item-1"></i>
+                                        <i class="light-item-2"></i>
+                                        <i class="light-item-3"></i>
+                                        <i class="light-item-4"></i>
+                                        <i class="light-item-5"></i>
+                                        <i class="light-item-6"></i>
+                                        <i class="light-item-7"></i>
+                                        <i class="light-item-8"></i>
+                                        <i class="light-item-9"></i>
+                                    </i>
+                                </i>
+                            </i>
+                        </i>
+                    </i>
+                    <i class="kylo-hand-right">
+                        <i class="hand-arm">
+                            <i class="hand-last">
+                                <i class="hand-finger-left"></i>
+                            </i>
+                        </i>
+                    </i>
+                </div>
+            </div>
+            <div class="layers-trees-1">
+                <div class="tree-left-content">
+                    <i class="i-right-top"></i>
+                    <i class="i-right-middle"></i>
+                    <i class="i-right-bottom"></i>
+                    <i class="limb">
+                        <i class="limb-bottom"></i>
+                        <i class="limb-1">
+                            <i class="limb-2">
+                                <i class="limb-3-second"></i>
+                                <i class="limb-3">
+                                    <i class="limb-4">
+                                        <i class="limb-5-second"></i>
+                                        <i class="limb-5-first"></i>
+                                    </i>
+                                </i>
+                            </i>
+                        </i>
+                    </i>
+                </div>
+                <div class="tree-right-content">
+                    <i class="i-left-top">
+                        <i class="top-limb">
+                            <i class="top-limb-1">
+                                <i class="top-limb-2">
+                                    <i class="top-limb-3"></i>
+                                </i>
+                            </i>
+                        </i>
+                    </i>
+                    <i class="i-left-bottom">
+                        <i class="bottom-limb">
+                            <i class="bottom-limb-1">
+                                <i class="bottom-limb-2">
+                                    <i class="bottom-limb-3">
+                                        <i class="bottom-limb-4"></i>
+                                    </i>
+                                </i>
+                            </i>
+                        </i>
+                    </i>
+                    <i class="center-limb">
+                        <i class="center-limb-1">
+                            <i class="center-limb-2"></i>
+                        </i>
+                    </i>
+                    <i class="i-right-top"></i>
+                    <i class="i-right-bottom"><i></i></i>
                 </div>
             </div>
         </div>
-    </body>
-</html>
+        <a class="page-deco is-breathable breathe-small"></a>
+    </div>
+</div>
+@endsection

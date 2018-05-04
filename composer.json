@@ -1,13 +1,15 @@
 {
     "name": "laravel/laravel",
-    "description": "The Laravel Framework.",
+    "description": "The Chat Interface build using laravel",
     "keywords": ["framework", "laravel"],
     "license": "MIT",
+    "version": "0.1",
     "type": "project",
     "require": {
         "php": "^7.1.3",
         "fideloper/proxy": "^4.0",
         "laravel/framework": "5.6.*",
+        "laravel/socialite": "^3.0",
         "laravel/tinker": "^1.0"
     },
     "require-dev": {
