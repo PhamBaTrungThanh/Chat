@@ -1,0 +1,11 @@
+/* Manually override Bulma */
+.title, .subtitle {
+    font-family: $title-family;
+    color: $white-dank;
+}
+.dark-background {
+    background: $dark-violet;
+    .title, .subtitle {
+        color: $white-dank;
+    }
+}

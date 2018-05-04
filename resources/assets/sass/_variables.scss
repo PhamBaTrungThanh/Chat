@@ -8,11 +8,13 @@ $beige-lighter: #EFF0EB;
 $dark-violet: #1B0B35;
 $white-dank: hsl(0, 0, 98%);
 // Update Bulma's global variables
-$family-sans-serif: "Nunito", serif;
+$body-family: "Nunito", san-serif;
+$title-family: "Space Mono", serif;
 $grey-dark: $brown;
 $grey-light: $beige-light;
 $primary: $purple;
 $link: $pink;
+$link-hover: darken($pink, 10%);
 $body-background-color: $dark-violet;
 $body-color: $white-dank;
 // Update some of Bulma's component variables
