@@ -1,7 +1,14 @@
 .field {
     background: $white-dank;
-    margin-top: 10px;
+    color: $body-inverse-color;
+    margin: 10px 0;
     position: relative;
+    .help {
+        font-size: 0.9rem;
+        padding: 0px 10px 5px;
+        font-style: italic;
+        color: $danger;
+    }
     &.with-triangle:before {
         display: block;
         content: "";
@@ -23,6 +30,19 @@
             border: none;
             background: transparent;
             font-size: inherit;
+            box-shadow: none;
+        }
+
+        // For checkboxes
+        input[type="checkbox"] {
+            @extend .visually-hidden
+        }
+        input[type="checkbox"] + label {
+            cursor: pointer;
+            user-select: none;
+        }
+        input[type="checkbox"]:checked + label {
+            color: darken($body-inverse-color, 15%);
         }
         &:not(:last-of-type):after {
             display: block;
@@ -40,10 +60,13 @@
         flex-direction: row-reverse;
         input {
             flex: 1 1 100%;
+
         }
         span.icon {
             margin-right: 10px;
             position: relative;
+            transition: color 0.2s ease-in-out;
+            min-width: 1rem;
         }
         span.icon:after {
             display: block;
@@ -54,6 +77,21 @@
             width: 1px;
             background: $grey-light;
             position: absolute;
+            transform-origin: center center;
+            transform: scaleY(1);
+            transition: transform 0.2s ease-in-out;
+        }
+        input:focus + span.icon {
+            color: $grey-dark;
+        }
+        input:focus + span.icon:after, input:required:valid + span.icon:after {
+            transform: scaleY(0);
+        }
+        input.is-invalid {
+            color: $danger;
+        }
+        input.is-invalid + span.icon {
+            color: $danger;
         }
     }
 }

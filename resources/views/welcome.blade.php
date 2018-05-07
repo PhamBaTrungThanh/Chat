@@ -5,7 +5,7 @@
 @endsection
 @section('content')
 <div class="wellcome-header">
-    <p class="is-size-3 has-text-centered" style="font-family: 'Space Mono'">Bạn cần <a href="{{ route('login') }}">đăng nhập</a> để sử dụng trang web</p>
+    <p class="is-size-3 has-text-centered" style="font-family: 'Space Mono'">Bạn cần <a href="{{ route('login') }}" class="special-link">đăng nhập</a> để sử dụng trang web</p>
 </div>
 <div id="wellcome">
     <div class="page">
@@ -207,4 +207,5 @@
         <div class="page-deco"></div>
     </div>
 </div>
+
 @endsection

@@ -1,7 +1,7 @@
 
 /** Responsive hacks **/
 @media (any-hover: hover) {
-    // Mobile, tablet alike
+    // on desktop
     .hide-on-mobile {
         display: none !important;
     }
@@ -9,8 +9,28 @@
         visibility: hidden;
     }
     .show-on-mobile {
-        display: block !important;
+        display: none ;
     }
+}
+@media (any-hover: none) {
+    // on mobile
+    .show-on-mobile {
+        display: block;
+    }
+}
+.special-link {
+    position: relative;
+    z-index: 2;
+}
+.visually-hidden {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
 }
 
 /** End Responsive hacks **/
