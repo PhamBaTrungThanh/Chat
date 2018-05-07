@@ -1,23 +1,4 @@
 
-/** Responsive hacks **/
-@media (any-hover: hover) {
-    // on desktop
-    .hide-on-mobile {
-        display: none !important;
-    }
-    .invisible-on-mobile {
-        visibility: hidden;
-    }
-    .show-on-mobile {
-        display: none ;
-    }
-}
-@media (any-hover: none) {
-    // on mobile
-    .show-on-mobile {
-        display: block;
-    }
-}
 .special-link {
     position: relative;
     z-index: 2;

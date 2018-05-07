@@ -5,13 +5,16 @@
         "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
         "watch": "npm run development -- --watch",
         "watch-poll": "npm run watch -- --watch-poll",
-        "hot": "cross-env NODE_ENV=development node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot --https --config=node_modules/laravel-mix/setup/webpack.config.js --key C:/Users/Admin/laragon/etc/ssl/chat.2.dev.key --cert C:/Users/Admin/laragon/etc/ssl/chat.2.dev.crt --cacert C:/Users/Admin/laragon/etc/ssl/cacert.pem",
+        "hotssl": "cross-env NODE_ENV=development node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot --https --config=node_modules/laravel-mix/setup/webpack.config.js --key C:/Users/Admin/laragon/etc/ssl/chat.2.dev.key --cert C:/Users/Admin/laragon/etc/ssl/chat.2.dev.crt --cacert C:/Users/Admin/laragon/etc/ssl/cacert.pem",
+        "hot": "cross-env NODE_ENV=development node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
         "prod": "npm run production",
         "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
     },
     "devDependencies": {
         "axios": "^0.18",
         "bootstrap": "^4.0.0",
+        "browser-sync": "^2.24.4",
+        "browser-sync-webpack-plugin": "2.0.1",
         "cross-env": "^5.1",
         "jquery": "^3.2",
         "laravel-mix": "^2.0",

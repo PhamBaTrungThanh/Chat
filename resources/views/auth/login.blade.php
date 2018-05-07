@@ -68,7 +68,7 @@
                         </span>
                     </div>
                     <div class="control with-icon">
-                        <input type="text" class="input" name="new_password" id="new_password" placeholder="Mật khẩu">
+                        <input type="password" class="input" name="new_password" id="new_password" placeholder="Mật khẩu">
                         <span class="icon">
                             <i class="fas fa-key"></i>
                         </span>

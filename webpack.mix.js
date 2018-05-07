@@ -13,4 +13,10 @@ let mix = require('laravel-mix');
 
 mix.js('resources/assets/js/app.js', 'public/js')
    .sass('resources/assets/sass/app.scss', 'public/css')
-   .sass('resources/assets/sass/preloader.scss', 'public/css');
+   .sass('resources/assets/sass/preloader.scss', 'public/css')
+   .sourceMaps()
+   .browserSync('chat.localhost');
+   // run versioning on production only
+if (mix.inProduction()) {
+    mix.version();
+}
