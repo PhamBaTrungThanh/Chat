@@ -1,0 +1,56 @@
+.login-container {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .login-panel {
+
+        min-width: 950px;
+        min-height: 500px;
+        background: $white-dank;
+        border-radius: $radius;
+        display: flex;
+
+        .sign-in, .sign-up {
+            min-height: 100%;
+            flex: 1 1 0;
+            padding: 100px 30px 0;
+        }
+        .sign-in {
+            background: $body-inverse-color;
+            
+        }
+        .separator {
+            background: $white-dank;
+            width: 150px;
+            min-height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            background: $body-inverse-color;
+            .color-logo {
+                border-radius: 50%;
+                width: 100%;
+                display: block;
+                background: $white-dank;
+                position: relative;
+                z-index: 1;
+                padding: 10px 10px 3px 10px;
+                overflow: hidden;
+            }
+            &:after {
+                display: block;
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                clip-path: polygon(100% 0, 0% 100%, 100% 100%);
+                background: $white-dank;
+            }
+        }
+    }
+}

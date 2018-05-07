@@ -5,18 +5,26 @@ $pink: #FA7C91;
 $brown: #757763;
 $beige-light: #D0D1CD;
 $beige-lighter: #EFF0EB;
-$dark-violet: #1B0B35;
+$darksider: #292931;
+$brown-violet: #423142;
+$golden-yellow: #fff670;
 $white-dank: hsl(0, 0, 98%);
+
+
+
+
 // Update Bulma's global variables
-$body-family: "Nunito", san-serif;
-$title-family: "Space Mono", serif;
+$body-family: "Roboto", sans-serif;
 $grey-dark: $brown;
 $grey-light: $beige-light;
-$primary: $purple;
+$primary: $golden-yellow;
 $link: $pink;
+
 $link-hover: darken($pink, 10%);
-$body-background-color: $dark-violet;
+$body-background-color: $darksider;
 $body-color: $white-dank;
+$body-inverse-color: #3a3e4b;
+
 // Update some of Bulma's component variables
 $control-border-width: 2px;
 $input-background-color: $beige-lighter;
