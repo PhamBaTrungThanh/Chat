@@ -3653,11 +3653,18 @@ h6,
 .login-container .login-panel .color-logo {
   border-radius: 50%;
   width: 100%;
-  display: block;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-item-align: center;
+      align-self: center;
   background: #fafafa;
   position: relative;
   z-index: 1;
-  padding: 10px 10px 0px 10px;
+  padding: .3em;
   overflow: hidden;
   margin: 0 5%;
 }
