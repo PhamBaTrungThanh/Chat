@@ -1,5 +1,5 @@
-.dark-background {
-    background: $body-inverse-color;
+.primary-background {
+    background: $primary;
     .title {
         color: $body-color;
     }
@@ -8,14 +8,3 @@
     }
 }
 
-
-.white-background {
-    background: $body-color;
-    color: $body-inverse-color;
-    .title {
-        color: $body-inverse-color;
-    }
-    .subtitle {
-        color: lighten($body-inverse-color, 10%);
-    }
-}

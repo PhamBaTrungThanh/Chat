@@ -1,6 +1,6 @@
 .field {
     background: $white-dank;
-    color: $body-inverse-color;
+    color: $primary;
     margin: 10px 0;
     position: relative;
     .help {
@@ -42,7 +42,7 @@
             user-select: none;
         }
         input[type="checkbox"]:checked + label {
-            color: darken($body-inverse-color, 15%);
+            color: darken($primary, 15%);
         }
         &:not(:last-of-type):after {
             display: block;

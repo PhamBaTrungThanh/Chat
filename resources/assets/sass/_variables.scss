@@ -9,7 +9,7 @@ $darksider: #292931;
 $brown-violet: #423142;
 $golden-yellow: #fff670;
 $white-dank: hsl(0, 0, 98%);
-
+$dark-dank: #3a3e4b;
 
 
 
@@ -17,13 +17,12 @@ $white-dank: hsl(0, 0, 98%);
 $body-family: "Roboto", sans-serif;
 $grey-dark: $brown;
 $grey-light: $beige-light;
-$primary: $golden-yellow;
+$primary: $dark-dank;
 $link: $pink;
 
 $link-hover: darken($pink, 10%);
 $body-background-color: $darksider;
 $body-color: $white-dank;
-$body-inverse-color: #3a3e4b;
 
 // Update some of Bulma's component variables
 $control-border-width: 0px;
