@@ -83,8 +83,8 @@
                         </label>
                     </div>
                 </div>
-                <button type="submit" value="Đăng ký" class="button sign-up-button">
-                    <span>Xác nhận</span>
+                <button type="submit" value="Đăng ký" class="button has-icon">
+                    <span>Đăng ký</span>
                     <span class="icon">
                         <i class="fas fa-arrow-right"></i>
                     </span>

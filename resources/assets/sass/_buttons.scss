@@ -1,0 +1,33 @@
+.button.has-icon {
+    overflow: hidden;
+    span:first-child {
+        margin: 0 1em;
+        font-size: 0.95em;
+        text-transform: uppercase;
+        flex: 1 1 0; 
+    }
+    span.icon {
+        margin-right: 0.55em;
+        color: $body-color;
+        z-index: 1;
+    }
+    &:after {
+        content: '';
+        position: absolute;
+        display: block;
+        transition: all 0.3s;
+        transform-origin: 0 0;
+        transform: rotate(-20deg);
+        width: 30%;
+        height: 200%;
+        background: rgba($primary, 0.9);
+        z-index: 1;
+        right: -1px;
+        top: 0;
+        margin: -5px 0 0 -5px;
+        z-index: 0;
+    }
+    &:hover:after {
+        width: 40%;
+    }
+}
