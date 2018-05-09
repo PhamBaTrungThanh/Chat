@@ -3,7 +3,7 @@
 @section('content')
 <div class="login-container">
     <div class="login-panel content">
-        <div class="sign-in dark-background">
+        <div class="sign-in primary-background">
             <figure class="color-logo on-mobile is-hidden-desktop">
                 <img src="images/color-logo.png" alt="">
             </figure>
@@ -55,41 +55,10 @@
                 <img src="images/color-logo.png" alt="">
             </figure>
         </div>
-        <div class="sign-up white-background is-hidden-touch">
+        <div class="sign-up is-hidden-touch">
             <div class="padding-container is-hidden-touch"></div>
             <h3 class="has-text-centered">Đăng ký</h3>
-            <form method="POST" action="{{ route('register') }}">
-                @csrf
-                <div class="field">
-                    <div class="control with-icon">
-                        <input type="text" class="input" name="new_email" id="new_email" placeholder="Email">
-                        <span class="icon">
-                            <i class="fas fa-envelope"></i>
-                        </span>
-                    </div>
-                    <div class="control with-icon">
-                        <input type="password" class="input" name="new_password" id="new_password" placeholder="Mật khẩu">
-                        <span class="icon">
-                            <i class="fas fa-key"></i>
-                        </span>
-                    </div>
-                    <div class="control">
-                        <input type="checkbox" name="terms_and_conditions" id="terms_and_conditions">
-                        <label for="terms_and_conditions">
-                            <span class="icon">
-                                <i class="fas fa-check-circle"></i>
-                            </span>
-                            Tôi đồng ý và sẽ tuân thủ những quy định của <a class="special-link">Chatt</a>
-                        </label>
-                    </div>
-                </div>
-                <button type="submit" value="Đăng ký" class="button has-icon">
-                    <span>Đăng ký</span>
-                    <span class="icon">
-                        <i class="fas fa-arrow-right"></i>
-                    </span>
-                </button>
-            </form>
+            @include('auth.register-form')
         </div>
 
     </div>

@@ -3,7 +3,7 @@
 
 // Variables
 @import "variables";
-@import "global";
+
 
 // Import some of Bulma
 @import 'node_modules/bulma/sass/utilities/all';
@@ -11,7 +11,9 @@
 @import 'node_modules/bulma/sass/components/level';
 @import 'node_modules/bulma/sass/elements/title';
 @import 'node_modules/bulma/sass/elements/content';
-@import 'node_modules/bulma/sass/elements/button';
+@import 'node_modules/bulma/sass/elements/icon';
+
+@import "global";
 @import "override";
 @import "colors";
 @import "forms";
