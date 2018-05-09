@@ -1,8 +1,4 @@
 @extends('layouts.app')
-@section('headinclude')
-    <link href="{{ mix('css/preloader.css') }}" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Space+Mono&amp;subset=vietnamese" rel="stylesheet"> 
-@endsection
 @section('content')
 <div class="wellcome-header">
     <p class="is-size-3 has-text-centered" style="font-family: 'Space Mono'">Bạn cần <a href="{{ route('login') }}" class="special-link">đăng nhập</a> để sử dụng trang web</p>
@@ -209,3 +205,8 @@
 </div>
 
 @endsection
+
+@push('headend')
+    <link href="{{ mix('css/preloader.css') }}" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Space+Mono&amp;subset=vietnamese" rel="stylesheet"> 
+@endpush

@@ -20,7 +20,7 @@
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
     <script defer src="https://use.fontawesome.com/releases/v5.0.12/js/solid.js" integrity="sha384-652/z7yNdGONCCBu0u5h5uF9voJhBdgruAuIDVheEaQ7O/ZC9wyyV+yZsYb32Wy7" crossorigin="anonymous"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.0.12/js/fontawesome.js" integrity="sha384-6AOxTjzzZLvbTJayrLOYweuPckqh0rrB4Sj+Js8Vzgr85/qm2e0DRqi+rBzyK52J" crossorigin="anonymous"></script>
-    @yield('headinclude')
+    @stack('headend')
 </head>
 <body>
     <div id="app">
@@ -28,5 +28,6 @@
             @yield('content')
         </main>
     </div>
+    @stack('bodyend')
 </body>
 </html>
