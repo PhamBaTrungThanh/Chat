@@ -29,8 +29,4 @@ class User extends Authenticatable
     public function username() {
         return 'email';
     }
-    public function verifyUser()
-    {
-        return $this->hasOne(VerifyUser::class);
-    }
 }

@@ -44,6 +44,9 @@
         input[type="checkbox"]:checked + label {
             color: darken($primary, 15%);
         }
+        input[type="checkbox"]:not(:checked).is-invalid + label {
+            color: $danger;
+        }
         &:not(:last-of-type):after {
             display: block;
             content: "";
