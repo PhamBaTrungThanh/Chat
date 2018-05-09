@@ -12,57 +12,59 @@
                 Rất cám ơn bạn đã đăng ký làm thành viên của <a class="special-link" href="{{env('APP_URL')}}">{{env('APP_NAME')}}</a>.
                 Bạn có vui lòng cung cấp thêm một vài thông tin không?
             </p>
-            <div class="field">
-                <div class="control">
-                    <h4>Ngày sinh</h4>
-                    <b>Ngày</b>
-                    <select name="day" id="day">
-                        
-                        @for($i = 1; $i <=31; $i++)
-                            <option value="{{$i}}">{{$i}}</option>
-                        @endfor
-                    </select>
-                    <span>&nbsp;</span><span>&nbsp;</span>
-                    <b>Tháng</b>
-                    <span>&nbsp;</span>
-                    <select name="month" id="month">
-                        @for($i = 1; $i <=12; $i++)
-                            <option value="{{$i}}">{{$i}}</option>
-                        @endfor
-                    </select>
-                    <span>&nbsp;</span><span>&nbsp;</span>
-                    <b>Năm</b>
-                    <span>&nbsp;</span>
-                    <select name="year" id="year">
-                        @for ($i = $now; $i >= $til; $i--)
-                            <option value="{{$i}}">{{$i}}</option>
-                        @endfor
-                    </select>                   
-                </div>
-                <div class="control">
-                    <h4>{{__("Ảnh đại diện")}}</h4>
-                    <input type="file" name="avatar" id="avatar" class="visually-hidden" accept="image/*">
-                    <figure class="avatar-display">
-                        <img src="" id="avatar-image">
-                    </figure>
-                    <label for="avatar" class="has-text-centered button is-link">
-                        {{__("Tải ảnh lên")}}
-                    </label>
-                </div>
-            </div>
-            
-            <div class="level">
-                <div class="level-left">
-                    <div class="level-item">
-                        <button class="is-primary button">{{__('Tiếp tục')}}</button>
+            <form method="UPDATE" action="{{ route('user.update', auth()->user())}}">
+                <div class="field">
+                    <div class="control">
+                        <h4>Ngày sinh</h4>
+                        <b>Ngày</b>
+                        <select name="day" id="day">
+                            
+                            @for($i = 1; $i <=31; $i++)
+                                <option value="{{$i}}">{{$i}}</option>
+                            @endfor
+                        </select>
+                        <span>&nbsp;</span><span>&nbsp;</span>
+                        <b>Tháng</b>
+                        <span>&nbsp;</span>
+                        <select name="month" id="month">
+                            @for($i = 1; $i <=12; $i++)
+                                <option value="{{$i}}">{{$i}}</option>
+                            @endfor
+                        </select>
+                        <span>&nbsp;</span><span>&nbsp;</span>
+                        <b>Năm</b>
+                        <span>&nbsp;</span>
+                        <select name="year" id="year">
+                            @for ($i = $now; $i >= $til; $i--)
+                                <option value="{{$i}}">{{$i}}</option>
+                            @endfor
+                        </select>                   
+                    </div>
+                    <div class="control">
+                        <h4>{{__("Ảnh đại diện")}}</h4>
+                        <input type="file" name="avatar" id="avatar" class="visually-hidden" accept="image/*">
+                        <figure class="avatar-display">
+                            <img src="" id="avatar-image">
+                        </figure>
+                        <label for="avatar" class="has-text-centered button is-link">
+                            {{__("Tải ảnh lên")}}
+                        </label>
                     </div>
                 </div>
-                <div class="level-right">
-                    <div class="level-item">
-                        <a href="{{env('APP_URL')}}?skip=1">{{__('Không, cảm ơn.')}}</a>
-                    </div>      
+                
+                <div class="level">
+                    <div class="level-left">
+                        <div class="level-item">
+                            <button class="is-primary button">{{__('Tiếp tục')}}</button>
+                        </div>
+                    </div>
+                    <div class="level-right">
+                        <div class="level-item">
+                            <a href="{{env('APP_URL')}}?skip=1">{{__('Không, cảm ơn.')}}</a>
+                        </div>      
+                    </div>
                 </div>
-            </div>
+            </form>
         </div>
     </div>
 </div>
