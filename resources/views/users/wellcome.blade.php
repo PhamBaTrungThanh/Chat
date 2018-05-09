@@ -7,7 +7,7 @@
             <figure class="color-logo">
                 <img src="images/users.png" alt="">
             </figure>
-            <h2 class="has-text-centered">{{ __('Xin chào') }},</h2>
+            <h2 class="has-text-centered">{{ __('Xin chào') }}, {{auth()->user()->name}}</h2>
             <p class="is-size-5">
                 Rất cám ơn bạn đã đăng ký làm thành viên của <a class="special-link" href="{{env('APP_URL')}}">{{env('APP_NAME')}}</a>.
                 Bạn có vui lòng cung cấp thêm một vài thông tin không?

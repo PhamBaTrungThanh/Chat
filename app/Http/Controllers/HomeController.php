@@ -14,8 +14,22 @@ class HomeController extends Controller
     public function index()
     {
         if (!auth()->user()) {
-            return view('splash');
+            return redirect('/splash');
         }
         return view('home');
+    }
+    public function splash()
+    {
+        return view('splash');
+    }
+    public function wellcome()
+    {
+        if (!session()->get('new_user')) {
+            //abort(500);
+        }
+        return view('users.wellcome')->with([
+            "now" => date("Y"),
+            "til" => date("Y") - 50
+        ]);
     }
 }

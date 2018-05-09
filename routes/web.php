@@ -13,6 +13,7 @@
 
 
 Auth::routes();
-Route::get('/wellcome', 'Auth/RegisterController@wellcome')->name('wellcome');
+Route::get('/wellcome', 'HomeController@wellcome')->name('wellcome');
+Route::get('/splash', 'HomeController@splash')->name('splash');
 Route::get('/', 'HomeController@index')->name('index');
 

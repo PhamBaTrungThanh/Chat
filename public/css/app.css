@@ -2378,10 +2378,6 @@ h6,
   background: #D0D1CD;
 }
 
-.field .control option[placeholder] {
-  display: none;
-}
-
 .field .control.with-icon {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -2406,6 +2402,7 @@ h6,
   -webkit-transition: color 0.2s ease-in-out;
   transition: color 0.2s ease-in-out;
   min-width: 1rem;
+  color: #757763;
 }
 
 .field .control.with-icon input[type="text"] + span.icon:after,
@@ -2430,7 +2427,7 @@ h6,
 
 .field .control.with-icon input[type="text"]:focus + span.icon,
 .field .control.with-icon input[type="password"]:focus + span.icon {
-  color: #757763;
+  color: #3a3e4b;
 }
 
 .field .control.with-icon input[type="text"]:focus + span.icon:after,
