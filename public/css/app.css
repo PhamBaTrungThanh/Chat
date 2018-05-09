@@ -1,165 +1,3 @@
-.special-link {
-  position: relative;
-  z-index: 2;
-}
-
-.visually-hidden,
-.field .control input[type="checkbox"] {
-  border: 0;
-  clip: rect(0 0 0 0);
-  height: 1px;
-  margin: -1px;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-  width: 1px;
-}
-
-/** End Responsive hacks **/
-
-.is-breathable {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  position: relative;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  z-index: 110;
-  border-radius: 50%;
-  pointer-events: auto;
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-}
-
-.is-breathable:after {
-  width: 100%;
-  height: 100%;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  content: '';
-  display: block;
-  position: absolute;
-  top: 0;
-  left: 0;
-  pointer-events: none;
-  border: 4px solid #9236f7;
-  border-radius: 50%;
-  -webkit-animation-duration: 1.2s;
-          animation-duration: 1.2s;
-  -webkit-animation-name: intervalBorderBreathe;
-          animation-name: intervalBorderBreathe;
-  -webkit-animation-iteration-count: infinite;
-          animation-iteration-count: infinite;
-}
-
-.is-breathable.breathe-light {
-  background-color: #f7f7f7;
-}
-
-.is-breathable.breathe-light:after {
-  border-color: #fafafa;
-}
-
-.is-breathable.breathe-small:after {
-  -webkit-animation-name: intervalBorderBreatheSmall;
-          animation-name: intervalBorderBreatheSmall;
-}
-
-@-webkit-keyframes intervalBorderBreathe {
-  0% {
-    opacity: 1;
-    -webkit-transform: scale(1);
-            transform: scale(1);
-  }
-
-  10% {
-    opacity: 1;
-  }
-
-  80% {
-    -webkit-transform: scale(1.6);
-            transform: scale(1.6);
-  }
-
-  100% {
-    opacity: 0;
-    -webkit-transform: scale(1.6);
-            transform: scale(1.6);
-  }
-}
-
-@keyframes intervalBorderBreathe {
-  0% {
-    opacity: 1;
-    -webkit-transform: scale(1);
-            transform: scale(1);
-  }
-
-  10% {
-    opacity: 1;
-  }
-
-  80% {
-    -webkit-transform: scale(1.6);
-            transform: scale(1.6);
-  }
-
-  100% {
-    opacity: 0;
-    -webkit-transform: scale(1.6);
-            transform: scale(1.6);
-  }
-}
-
-@-webkit-keyframes intervalBorderBreatheSmall {
-  0% {
-    opacity: 0;
-    -webkit-transform: scale(1.05);
-            transform: scale(1.05);
-  }
-
-  10% {
-    opacity: 1;
-  }
-
-  80% {
-    -webkit-transform: scale(1.2);
-            transform: scale(1.2);
-  }
-
-  100% {
-    opacity: 0;
-    -webkit-transform: scale(1.2);
-            transform: scale(1.2);
-  }
-}
-
-@keyframes intervalBorderBreatheSmall {
-  0% {
-    opacity: 0;
-    -webkit-transform: scale(1.05);
-            transform: scale(1.05);
-  }
-
-  10% {
-    opacity: 1;
-  }
-
-  80% {
-    -webkit-transform: scale(1.2);
-            transform: scale(1.2);
-  }
-
-  100% {
-    opacity: 0;
-    -webkit-transform: scale(1.2);
-            transform: scale(1.2);
-  }
-}
-
 @-webkit-keyframes spinAround {
   from {
     -webkit-transform: rotate(0deg);
@@ -2084,6 +1922,366 @@ a.has-text-danger:focus {
   font-size: 1.5rem;
 }
 
+.icon {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  height: 1.5rem;
+  width: 1.5rem;
+}
+
+.icon.is-small {
+  height: 1rem;
+  width: 1rem;
+}
+
+.icon.is-medium {
+  height: 2rem;
+  width: 2rem;
+}
+
+.icon.is-large {
+  height: 3rem;
+  width: 3rem;
+}
+
+.special-link {
+  position: relative;
+  z-index: 2;
+}
+
+.visually-hidden,
+.field .control input[type="checkbox"] {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+/** Responsive hacks **/
+
+.panel {
+  background: #fafafa;
+  border-radius: 4px;
+}
+
+.panel.is-responsive {
+  max-width: 1088px;
+  margin: 10vh auto 0;
+  padding: 3em 2em;
+}
+
+@media screen and (max-width: 1087px) {
+  .panel.is-responsive {
+    margin: 10vh 20px;
+  }
+}
+
+/** End Responsive hacks **/
+
+.is-breathable {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  z-index: 110;
+  border-radius: 50%;
+  pointer-events: auto;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+.is-breathable:after {
+  width: 100%;
+  height: 100%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  content: '';
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  border: 4px solid #9236f7;
+  border-radius: 50%;
+  -webkit-animation-duration: 1.2s;
+          animation-duration: 1.2s;
+  -webkit-animation-name: intervalBorderBreathe;
+          animation-name: intervalBorderBreathe;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+}
+
+.is-breathable.breathe-light {
+  background-color: #f7f7f7;
+}
+
+.is-breathable.breathe-light:after {
+  border-color: #fafafa;
+}
+
+.is-breathable.breathe-small:after {
+  -webkit-animation-name: intervalBorderBreatheSmall;
+          animation-name: intervalBorderBreatheSmall;
+}
+
+@-webkit-keyframes intervalBorderBreathe {
+  0% {
+    opacity: 1;
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+
+  10% {
+    opacity: 1;
+  }
+
+  80% {
+    -webkit-transform: scale(1.6);
+            transform: scale(1.6);
+  }
+
+  100% {
+    opacity: 0;
+    -webkit-transform: scale(1.6);
+            transform: scale(1.6);
+  }
+}
+
+@keyframes intervalBorderBreathe {
+  0% {
+    opacity: 1;
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+
+  10% {
+    opacity: 1;
+  }
+
+  80% {
+    -webkit-transform: scale(1.6);
+            transform: scale(1.6);
+  }
+
+  100% {
+    opacity: 0;
+    -webkit-transform: scale(1.6);
+            transform: scale(1.6);
+  }
+}
+
+@-webkit-keyframes intervalBorderBreatheSmall {
+  0% {
+    opacity: 0;
+    -webkit-transform: scale(1.05);
+            transform: scale(1.05);
+  }
+
+  10% {
+    opacity: 1;
+  }
+
+  80% {
+    -webkit-transform: scale(1.2);
+            transform: scale(1.2);
+  }
+
+  100% {
+    opacity: 0;
+    -webkit-transform: scale(1.2);
+            transform: scale(1.2);
+  }
+}
+
+@keyframes intervalBorderBreatheSmall {
+  0% {
+    opacity: 0;
+    -webkit-transform: scale(1.05);
+            transform: scale(1.05);
+  }
+
+  10% {
+    opacity: 1;
+  }
+
+  80% {
+    -webkit-transform: scale(1.2);
+            transform: scale(1.2);
+  }
+
+  100% {
+    opacity: 0;
+    -webkit-transform: scale(1.2);
+            transform: scale(1.2);
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.title,
+.subtitle {
+  font-family: "Fira Sans", sans-serif;
+  font-weight: normal;
+}
+
+.primary-background {
+  background: #3a3e4b;
+}
+
+.primary-background .title {
+  color: #fafafa;
+}
+
+.primary-background .subtitle {
+  color: #e0e0e0;
+}
+
+.field {
+  background: #fafafa;
+  color: #3a3e4b;
+  margin: 10px 0;
+  position: relative;
+}
+
+.field .help {
+  font-size: 0.9rem;
+  padding: 0px 10px 5px;
+  font-style: italic;
+  color: #ff3860;
+}
+
+.field.with-triangle:before {
+  display: block;
+  content: "";
+  position: absolute;
+  left: calc(50% - 5px);
+  top: -10px;
+  width: 0;
+  height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-bottom: 10px solid #fafafa;
+}
+
+.field .control {
+  position: relative;
+  color: #D0D1CD;
+  padding: 10px 15px;
+}
+
+.field .control input {
+  width: 100%;
+  border: none;
+  background: transparent;
+  font-size: inherit;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+.field .control input[type="checkbox"] + label {
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+.field .control input[type="checkbox"]:checked + label {
+  color: #191a20;
+}
+
+.field .control:not(:last-of-type):after {
+  display: block;
+  content: "";
+  position: absolute;
+  height: 1px;
+  bottom: 0;
+  left: 10px;
+  right: 10px;
+  background: #D0D1CD;
+}
+
+.field .control.with-icon {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: row-reverse;
+          flex-direction: row-reverse;
+}
+
+.field .control.with-icon input {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 100%;
+          flex: 1 1 100%;
+}
+
+.field .control.with-icon span.icon {
+  margin-right: 10px;
+  position: relative;
+  -webkit-transition: color 0.2s ease-in-out;
+  transition: color 0.2s ease-in-out;
+  min-width: 1rem;
+}
+
+.field .control.with-icon span.icon:after {
+  display: block;
+  content: "";
+  top: 2px;
+  right: -5px;
+  bottom: 2px;
+  width: 1px;
+  background: #D0D1CD;
+  position: absolute;
+  -webkit-transform-origin: center center;
+          transform-origin: center center;
+  -webkit-transform: scaleY(1);
+          transform: scaleY(1);
+  -webkit-transition: -webkit-transform 0.2s ease-in-out;
+  transition: -webkit-transform 0.2s ease-in-out;
+  transition: transform 0.2s ease-in-out;
+  transition: transform 0.2s ease-in-out, -webkit-transform 0.2s ease-in-out;
+}
+
+.field .control.with-icon input:focus + span.icon {
+  color: #757763;
+}
+
+.field .control.with-icon input:focus + span.icon:after,
+.field .control.with-icon input:required:valid + span.icon:after {
+  -webkit-transform: scaleY(0);
+          transform: scaleY(0);
+}
+
+.field .control.with-icon input.is-invalid {
+  color: #ff3860;
+}
+
+.field .control.with-icon input.is-invalid + span.icon {
+  color: #ff3860;
+}
+
 .button {
   background-color: white;
   border-color: #dbdbdb;
@@ -3369,162 +3567,12 @@ a.has-text-danger:focus {
           justify-content: flex-end;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-.title,
-.subtitle {
-  font-family: "Fira Sans", sans-serif;
-  font-weight: normal;
-}
-
-.primary-background {
-  background: #3a3e4b;
-}
-
-.primary-background .title {
-  color: #fafafa;
-}
-
-.primary-background .subtitle {
-  color: #e0e0e0;
-}
-
-.field {
-  background: #fafafa;
-  color: #3a3e4b;
-  margin: 10px 0;
-  position: relative;
-}
-
-.field .help {
-  font-size: 0.9rem;
-  padding: 0px 10px 5px;
-  font-style: italic;
-  color: #ff3860;
-}
-
-.field.with-triangle:before {
-  display: block;
-  content: "";
-  position: absolute;
-  left: calc(50% - 5px);
-  top: -10px;
-  width: 0;
-  height: 0;
-  border-left: 8px solid transparent;
-  border-right: 8px solid transparent;
-  border-bottom: 10px solid #fafafa;
-}
-
-.field .control {
-  position: relative;
-  color: #D0D1CD;
-  padding: 10px 15px;
-}
-
-.field .control input {
-  width: 100%;
-  border: none;
-  background: transparent;
-  font-size: inherit;
-  -webkit-box-shadow: none;
-          box-shadow: none;
-}
-
-.field .control input[type="checkbox"] + label {
-  cursor: pointer;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
-}
-
-.field .control input[type="checkbox"]:checked + label {
-  color: #191a20;
-}
-
-.field .control:not(:last-of-type):after {
-  display: block;
-  content: "";
-  position: absolute;
-  height: 1px;
-  bottom: 0;
-  left: 10px;
-  right: 10px;
-  background: #D0D1CD;
-}
-
-.field .control.with-icon {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: reverse;
-      -ms-flex-direction: row-reverse;
-          flex-direction: row-reverse;
-}
-
-.field .control.with-icon input {
-  -webkit-box-flex: 1;
-      -ms-flex: 1 1 100%;
-          flex: 1 1 100%;
-}
-
-.field .control.with-icon span.icon {
-  margin-right: 10px;
-  position: relative;
-  -webkit-transition: color 0.2s ease-in-out;
-  transition: color 0.2s ease-in-out;
-  min-width: 1rem;
-}
-
-.field .control.with-icon span.icon:after {
-  display: block;
-  content: "";
-  top: 2px;
-  right: -5px;
-  bottom: 2px;
-  width: 1px;
-  background: #D0D1CD;
-  position: absolute;
-  -webkit-transform-origin: center center;
-          transform-origin: center center;
-  -webkit-transform: scaleY(1);
-          transform: scaleY(1);
-  -webkit-transition: -webkit-transform 0.2s ease-in-out;
-  transition: -webkit-transform 0.2s ease-in-out;
-  transition: transform 0.2s ease-in-out;
-  transition: transform 0.2s ease-in-out, -webkit-transform 0.2s ease-in-out;
-}
-
-.field .control.with-icon input:focus + span.icon {
-  color: #757763;
-}
-
-.field .control.with-icon input:focus + span.icon:after,
-.field .control.with-icon input:required:valid + span.icon:after {
-  -webkit-transform: scaleY(0);
-          transform: scaleY(0);
-}
-
-.field .control.with-icon input.is-invalid {
-  color: #ff3860;
-}
-
-.field .control.with-icon input.is-invalid + span.icon {
-  color: #ff3860;
-}
-
 .button.has-icon {
   overflow: hidden;
 }
 
 .button.has-icon span:first-child {
-  margin: 0 1em;
+  margin: 0 1.5em;
   font-size: 0.95em;
   text-transform: uppercase;
   -webkit-box-flex: 1;
@@ -3542,13 +3590,13 @@ h6,
   content: '';
   position: absolute;
   display: block;
-  -webkit-transition: all 0.3s;
-  transition: all 0.3s;
+  -webkit-transition: width 0.2s ease-in-out;
+  transition: width 0.2s ease-in-out;
   -webkit-transform-origin: 0 0;
           transform-origin: 0 0;
   -webkit-transform: rotate(-20deg);
           transform: rotate(-20deg);
-  width: 30%;
+  width: 3em;
   height: 200%;
   background: rgba(58, 62, 75, 0.9);
   z-index: 1;
@@ -3559,7 +3607,7 @@ h6,
 }
 
 .button.has-icon:hover:after {
-  width: 40%;
+  width: 3.5em;
 }
 
 .login-container {
@@ -3671,6 +3719,12 @@ h6,
 
 .login-container .login-panel .color-logo.on-mobile {
   width: 50%;
+  margin: 0 auto;
+}
+
+.standalone .color-logo {
+  width: 50%;
+  max-width: 300px;
   margin: 0 auto;
 }
 
