@@ -13,7 +13,21 @@
     position: absolute;
     width: 1px;
 }
-
+/** Responsive hacks **/
+    .panel {
+        background: $white-dank;
+        border-radius: $radius;
+    }
+    .panel.is-responsive {
+        max-width: $desktop;
+        margin: 10vh auto 0;
+        padding: 3em 2em;
+    }
+    @media screen and (max-width: $desktop - 1px) {
+        .panel.is-responsive {
+            margin: 10vh 20px;
+        }
+    }
 /** End Responsive hacks **/
 .is-breathable {
     display: flex;

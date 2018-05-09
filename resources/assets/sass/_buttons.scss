@@ -1,7 +1,8 @@
+@import 'node_modules/bulma/sass/elements/button';
 .button.has-icon {
     overflow: hidden;
     span:first-child {
-        margin: 0 1em;
+        margin: 0 1.5em;
         font-size: 0.95em;
         text-transform: uppercase;
         flex: 1 1 0; 
@@ -15,10 +16,10 @@
         content: '';
         position: absolute;
         display: block;
-        transition: all 0.3s;
+        transition: width 0.2s ease-in-out;
         transform-origin: 0 0;
         transform: rotate(-20deg);
-        width: 30%;
+        width: 3em;
         height: 200%;
         background: rgba($primary, 0.9);
         z-index: 1;
@@ -28,6 +29,6 @@
         z-index: 0;
     }
     &:hover:after {
-        width: 40%;
+        width: 3.5em;
     }
 }
