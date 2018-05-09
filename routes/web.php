@@ -16,4 +16,4 @@ Auth::routes();
 Route::get('/wellcome', 'HomeController@wellcome')->name('wellcome');
 Route::get('/splash', 'HomeController@splash')->name('splash');
 Route::get('/', 'HomeController@index')->name('index');
-
+Route::resource('/user', 'UserController')->except(['index', 'create', 'store']);
