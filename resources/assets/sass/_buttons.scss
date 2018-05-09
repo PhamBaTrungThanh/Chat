@@ -9,7 +9,7 @@
     }
     span.icon {
         margin-right: 0.55em;
-        color: $body-color;
+        color: findColorInvert($body-color);
         z-index: 1;
     }
     &:after {

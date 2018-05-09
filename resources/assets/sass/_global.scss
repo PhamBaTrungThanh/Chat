@@ -13,6 +13,7 @@
     position: absolute;
     width: 1px;
 }
+
 /** Responsive hacks **/
     .panel {
         background: $white-dank;
@@ -22,6 +23,9 @@
         max-width: $desktop;
         margin: 10vh auto 0;
         padding: 3em 2em;
+    }
+    .panel.is-medium {
+        max-width: $desktop/3*2
     }
     @media screen and (max-width: $desktop - 1px) {
         .panel.is-responsive {

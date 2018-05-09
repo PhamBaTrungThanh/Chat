@@ -31,7 +31,7 @@
                 <span class="icon">
                     <i class="fas fa-check-circle"></i>
                 </span>
-                Tôi đồng ý và sẽ tuân thủ những quy định của <a class="special-link">Chatt</a>
+                Tôi đồng ý và sẽ tuân thủ những quy định của <a class="special-link">{{env('APP_NAME')}}</a>
             </label>
         </div>
         @if (count($errors->all() > 0))
