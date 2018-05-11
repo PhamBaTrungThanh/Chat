@@ -20,6 +20,9 @@ class HomeController extends Controller
     }
     public function splash()
     {
+        if (auth()->check()) {
+            return redirect("/");
+        }
         return view('splash');
     }
     public function wellcome()

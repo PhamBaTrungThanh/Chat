@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use Illuminate\Http\Request;
+use App\Events\UserUploadAvatar;
 
+use Illuminate\Http\Request;
 use Carbon\Carbon;
+
 class UserController extends Controller
 {
 
@@ -53,11 +55,13 @@ class UserController extends Controller
             if ($request->hasFile('avatar')) {
                 // If it valid
                 if ($request->file('avatar')->isValid()) {
-                    
-                    if (env('FILESYSTEM_DRIVER') === 'local') {
-                        $path = $request->file('avatar')->store('public/avatars');
+                    /*
+                    if (env('FILESYSTEM_DRIVER') === 'public') {
+                        $path = $request->file('avatar')->store('avatars');
                         $user->avatar = asset($path);
                     }
+                    */
+                    event(new UserUploadAvatar($user, $request->file('avatar')->getPathname()));
                 }
             }
             // if user update their birthday
@@ -70,11 +74,12 @@ class UserController extends Controller
             }
             // set user gender
             $user->gender = $request->input('gender');
+
             $user->save();
-            session()->flash("message", __("Success"));
+            return redirect("/")->with("message", __("Success"));
         }
 
-        return redirect("/");
+        //return redirect("/");
     }
 
     /**

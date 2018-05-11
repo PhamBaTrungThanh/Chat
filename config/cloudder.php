@@ -1,12 +1,6 @@
 <?php
 
-// Define the Regex
-$re = '/^cloudinary\:\/\/([^\:]+)\:([^\@]+)\@(.+)/';
-// Read url from config
-$cloud_url = env('CLOUDINARY_URL');
-// Regex Split it
-preg_match($re, $str, $matches, PREG_OFFSET_CAPTURE, 0);
-list($apiKey, $apiSecret, $cloudName) = $matches;
+list($scheme, $cloudName, $apiKey, $apiSecret) = array_values(parse_url(env('CLOUDINARY_URL')));
 return [
 
     /*

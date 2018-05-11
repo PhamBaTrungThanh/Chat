@@ -2136,6 +2136,20 @@ a.has-text-danger:focus {
   .panel.is-responsive {
     margin: 10vh 20px;
   }
+
+  .mobile-column-reverse {
+    -webkit-box-orient: vertical !important;
+    -webkit-box-direction: reverse !important;
+        -ms-flex-direction: column-reverse !important;
+            flex-direction: column-reverse !important;
+  }
+
+  .mobile-rpw-reverse {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: reverse;
+        -ms-flex-direction: row-reverse;
+            flex-direction: row-reverse;
+  }
 }
 
 /** End Responsive hacks **/
@@ -3896,5 +3910,76 @@ h6,
   width: 50%;
   max-width: 270px;
   margin: 0 auto;
+}
+
+.standalone.wellcome #avatar-image {
+  width: 128px;
+  height: 128px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border: 2px solid #ffffff;
+  -webkit-box-shadow: 0px 0px 0px 1px rgba(85, 85, 85, 0.2);
+          box-shadow: 0px 0px 0px 1px rgba(85, 85, 85, 0.2);
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.standalone.wellcome #avatar-image[src=""] {
+  display: none;
+}
+
+.standalone.wellcome .avatar-display {
+  margin: 0 !important;
+}
+
+.standalone.wellcome .gender-selector {
+  max-width: 300px;
+}
+
+.standalone.wellcome .choose-gender {
+  width: 128px;
+  height: 128px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  cursor: pointer;
+  position: relative;
+  -webkit-filter: saturate(0);
+          filter: saturate(0);
+  -webkit-transition: -webkit-filter 0.2s ease 0s;
+  transition: -webkit-filter 0.2s ease 0s;
+  transition: filter 0.2s ease 0s;
+  transition: filter 0.2s ease 0s, -webkit-filter 0.2s ease 0s;
+}
+
+.standalone.wellcome .choose-gender > figure {
+  margin: 0;
+}
+
+.standalone.wellcome .choose-gender:before {
+  display: block;
+  content: "";
+  position: absolute;
+  background: #3a3e4b;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  -webkit-transform: scale(1);
+          transform: scale(1);
+  -webkit-transition: -webkit-transform 0.2s ease 0s;
+  transition: -webkit-transform 0.2s ease 0s;
+  transition: transform 0.2s ease 0s;
+  transition: transform 0.2s ease 0s, -webkit-transform 0.2s ease 0s;
+}
+
+.standalone.wellcome input[type="radio"]:checked + .choose-gender:before {
+  -webkit-transform: scale(1.05);
+          transform: scale(1.05);
+}
+
+.standalone.wellcome input[type="radio"]:checked + .choose-gender {
+  -webkit-filter: saturate(1);
+          filter: saturate(1);
 }
 

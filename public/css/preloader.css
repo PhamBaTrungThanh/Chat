@@ -1,8 +1,29 @@
+div.splash {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.wellcome {
+  padding: 2em 0;
+}
+
 .wellcome-header {
-  position: absolute;
-  width: 100%;
-  margin-top: 3em;
-  z-index: 9999;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  height: 7em;
+  padding: 0 20px 20px;
 }
 
 @-webkit-keyframes movebg {
@@ -920,8 +941,7 @@
 #wellcome .page {
   position: relative;
   display: grid;
-  padding: 5em 0 0 0;
-  height: 100vh;
+  padding: 0;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -3700,8 +3720,8 @@
   #wellcome > .page {
     padding: 2em 0 0 0;
     height: auto;
-    -webkit-transform: scale(0.5);
-            transform: scale(0.5);
+    -webkit-transform: scale(0.8);
+            transform: scale(0.8);
     -webkit-transform-origin: 50% 0;
             transform-origin: 50% 0;
   }
