@@ -81,7 +81,7 @@
                             {{__("Tải ảnh lên")}}
                         </label>
                     </div>
-                    @if (count($errors->all() > 0))
+                    @if (count($errors->all()) > 0))
                         @foreach($errors->all() as $message)
                             <p class="help">
                                 {{ $message }}

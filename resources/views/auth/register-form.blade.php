@@ -34,7 +34,7 @@
                 Tôi đồng ý và sẽ tuân thủ những quy định của <a class="special-link">{{env('APP_NAME')}}</a>
             </label>
         </div>
-        @if (count($errors->all() > 0))
+        @if (count($errors->all()) > 0))
         @foreach($errors->all() as $message)
             <p class="help">
                 {{ $message }}
