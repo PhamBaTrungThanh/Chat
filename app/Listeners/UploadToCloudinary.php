@@ -27,7 +27,8 @@ class UploadToCloudinary
      */
     public function handle(UserUploadAvatar $event)
     {
-        $cloudder = Cloudder::upload($event->file, "user-{$event->user->id}__avatar");
+        $debug = (env('APP_DEBUG')) ? "debug/" : "";
+        $cloudder = Cloudder::upload($event->file, "{$debug}__user-{$event->user->id}__avatar");
         $result = Cloudder::getResult();
         $event->user->update(['avatar' => $result['secure_url']]);
     }

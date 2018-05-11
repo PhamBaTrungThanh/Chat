@@ -1,23 +1,15 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">Dashboard</div>
-
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    You are logged in!
-                </div>
+    <div class="content main-content with-sidebar">
+        <section role="sidebar" id="main__sidebar">
+            <div id="user__info">
+                <figure class="image is-128x128">
+                    <img src="{{auth()->user()->avatar}}" alt="User avatar">
+                </figure>
             </div>
-        </div>
+        </section>
+        <section role="chatbox" id="main__chatbox"></section>
     </div>
-</div>
+
 @endsection
