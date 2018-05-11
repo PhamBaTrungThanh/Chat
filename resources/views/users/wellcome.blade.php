@@ -4,7 +4,7 @@
 <div class="standalone wellcome">
     <div class="panel is-responsive is-medium">
         <div class="content">
-            <figure class="color-logo">
+            <figure class="color-logo image">
                 <img src="images/users.png" alt="">
             </figure>
             <h2 class="has-text-centered">{{ __('Xin chào') }}, {{auth()->user()->name}}</h2>
@@ -74,7 +74,7 @@
                     <div class="control">
                         <h4>{{__("Ảnh đại diện")}}</h4>
                         <input type="file" name="avatar" id="avatar" class="visually-hidden" accept="image/*">
-                        <figure class="avatar-display">
+                        <figure class="avatar-display image">
                             <img src="" id="avatar-image">
                         </figure>
                         <label for="avatar" class="has-text-centered button is-link">

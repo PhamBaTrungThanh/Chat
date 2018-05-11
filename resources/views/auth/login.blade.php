@@ -4,7 +4,7 @@
 <div class="login-container">
     <div class="login-panel content">
         <div class="sign-in primary-background">
-            <figure class="color-logo on-mobile is-hidden-desktop">
+            <figure class="color-logo on-mobile is-hidden-desktop image">
                 <img src="images/color-logo.png" alt="">
             </figure>
             <div class="padding-container is-hidden-touch"></div>
@@ -51,7 +51,7 @@
             </form>
         </div>
         <div class="separator is-hidden-touch">
-            <figure class="color-logo">
+            <figure class="color-logo image">
                 <img src="images/color-logo.png" alt="">
             </figure>
         </div>

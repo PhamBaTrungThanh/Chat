@@ -84,9 +84,10 @@
     width: 50%;
     max-width: 270px;
     margin: 0 auto;
-
 }
-
+.color-logo > img {
+    height: 100%;
+}
 .standalone.wellcome {
     #avatar-image {
         width: 128px;
