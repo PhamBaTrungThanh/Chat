@@ -28,7 +28,7 @@ class HomeController extends Controller
     public function wellcome()
     {
         if (!session()->get('new_user')) {
-            //abort(500);
+            abort(500);
         }
         return view('users.wellcome')->with([
             "now" => date("Y"),
