@@ -1,5 +1,8 @@
 {
-    "/js/app.js": "/js/app.js",
-    "/css/app.css": "/css/app.css",
-    "/css/preloader.css": "/css/preloader.css"
+    "/js/app.js": "/js/app.js?id=b2346a425814512a387b",
+    "/css/app.css": "/css/app.css?id=c9bda8b231115f9e296c",
+    "/css/preloader.css": "/css/preloader.css?id=8c3bed8e9e38cfed94fd",
+    "/js/app.js.map": "/js/app.js.map?id=43926d21eb240e580a04",
+    "/css/app.css.map": "/css/app.css.map?id=09a9b1710a1cc8d09c6a",
+    "/css/preloader.css.map": "/css/preloader.css.map?id=151e20e836d9b91d87e2"
 }
