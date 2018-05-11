@@ -55,13 +55,13 @@ class UserController extends Controller
             if ($request->hasFile('avatar')) {
                 // If it valid
                 if ($request->file('avatar')->isValid()) {
-                    /*
-                    if (env('FILESYSTEM_DRIVER') === 'public') {
+                    //if (env('APP_DEBUG') === true) { 
+                    if (false) {
                         $path = $request->file('avatar')->store('avatars');
                         $user->avatar = asset($path);
+                    } else {
+                        event(new UserUploadAvatar($user, $request->file('avatar')->getPathname()));
                     }
-                    */
-                    event(new UserUploadAvatar($user, $request->file('avatar')->getPathname()));
                 }
             }
             // if user update their birthday

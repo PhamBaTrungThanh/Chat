@@ -25,11 +25,12 @@ class HomeController extends Controller
         }
         return view('splash');
     }
-    public function wellcome()
+    public function wellcome(Request $request)
     {
         if (!session()->get('new_user')) {
             return redirect("/");
         }
+        $request->session()->forget('new_user');
         return view('users.wellcome')->with([
             "now" => date("Y"),
             "til" => date("Y") - 50

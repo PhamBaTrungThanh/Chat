@@ -71,6 +71,6 @@ class RegisterController extends Controller
     }
     protected function registered($request, $user)
     {
-        session()->flash('new_user', true);
+        $request->session()->flash('new_user', 'true');
     }
 }
