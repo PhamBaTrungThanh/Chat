@@ -27,9 +27,16 @@
     .panel.is-medium {
         max-width: $desktop/3*2
     }
+
     @media screen and (max-width: $desktop - 1px) {
         .panel.is-responsive {
             margin: 10vh 20px;
+        }
+        .mobile-column-reverse {
+            flex-direction: column-reverse !important;
+        }
+        .mobile-rpw-reverse {
+            flex-direction: row-reverse;
         }
     }
 /** End Responsive hacks **/
