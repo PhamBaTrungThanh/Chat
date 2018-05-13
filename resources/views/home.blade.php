@@ -5,7 +5,7 @@
         <section role="sidebar" id="main__sidebar">
             <div id="user__info">
                 <figure class="image avatar">
-                    <img src="{{auth()->user()->avatar}}" alt="User avatar">
+                    <img src="{{auth()->user()->avatar->url}}" alt="User avatar">
                 </figure>
             </div>
             <div id="waves">
@@ -13,7 +13,11 @@
                 <div class="wave wave--2"></div>
                 <div class="wave wave--3"></div>
             </div>
-            <div id="sidebar__content" class=""></div>
+            <div id="sidebar__content" class="">
+                <div id="sidebar__menu">
+                    
+                </div>
+            </div>
         </section>
         <section role="chatbox" id="main__chatbox"></section>
     </div>

@@ -6,9 +6,10 @@ use App\Events\UserUploadAvatar;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use JD\Cloudder\Facades\Cloudder;
-
-class UploadToCloudinary
+use Illuminate\Support\Facades\Log;
+class UploadToCloudinary implements ShouldQueue
 {
+    public $tries = 1;
     /**
      * Create the event listener.
      *
@@ -28,8 +29,15 @@ class UploadToCloudinary
     public function handle(UserUploadAvatar $event)
     {
         $debug = (env('APP_DEBUG')) ? "debug/" : "";
+        Log::info('Full file path '.$event->file);
         $cloudder = Cloudder::upload($event->file, "{$debug}__user-{$event->user->id}__avatar");
+        Log::info($cloudder);
         $result = Cloudder::getResult();
-        $event->user->update(['avatar' => $result['secure_url']]);
+        $event->user->avatar()->update([
+            "public_id" => $result["public_id"],
+            "absolute_url" => $result["url"],
+            "is_processing" => false,
+        ]);
+        return true;
     }
 }

@@ -61,6 +61,7 @@ class UserController extends Controller
                         $user->avatar = asset($path);
                     } else {
                         event(new UserUploadAvatar($user, $request->file('avatar')->getPathname()));
+                        $user->avatar()->update(["is_processing" => true]);
                     }
                 }
             }

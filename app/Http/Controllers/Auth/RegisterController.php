@@ -65,12 +65,13 @@ class RegisterController extends Controller
             'email' => $data['new_email'],
             'name' => $data['new_name'],
             'password' => bcrypt($data['new_password']),
-            'avatar' => asset("/images/default-avatar.png"),
         ]); 
+        $user->avatar()->create();
         return $user;
     }
     protected function registered($request, $user)
     {
         $request->session()->flash('new_user', 'true');
+        return redirect()->route("wellcome");
     }
 }

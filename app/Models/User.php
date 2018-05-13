@@ -15,9 +15,9 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'avatar',
+        'name', 'email', 'password',
     ];
-
+    public $with = ["avatar"];
     /**
      * The attributes that should be hidden for arrays.
      *
@@ -28,5 +28,9 @@ class User extends Authenticatable
     ];
     public function username() {
         return 'email';
+    }
+    public function avatar()
+    {
+        return $this->hasOne(Avatar::class);
     }
 }
