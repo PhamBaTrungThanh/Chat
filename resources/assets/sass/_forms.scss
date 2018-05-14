@@ -60,7 +60,22 @@
             right: 10px;
             background: $grey-light;
         }
+
+        &.is-bordered {
+            border: 1px solid $grey-light;
+            border-radius: $radius;
+        }
+        &.is-large {
+            input[type="text"], input[type="password"] {
+                font-size: 2em;
+            }
+        }
+        &.button-group {
+            padding-left: 0;
+            padding-right: 0;
+        }
     }
+
     .control.with-icon {
         display: flex;
         flex-direction: row-reverse;

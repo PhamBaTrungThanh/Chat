@@ -32,7 +32,7 @@ class User extends Authenticatable
     public function getAvatarUrlAttribute()
     {
         if ($this->avatar === "images/default-avatar.png") {
-            return $this->avatar;
+            return asset($this->avatar);
         } else {
             return str_replace_first("image/upload/", "image/upload/" . config('images.avatar_transformation') . "/", $this->avatar);
         }

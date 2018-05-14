@@ -13,7 +13,17 @@
     position: absolute;
     width: 1px;
 }
-
+figure.avatar {
+    width: 100px;
+    height: 100px; 
+    object-fit: cover;
+    border: 2px solid #ffffff;
+    box-shadow: 0px 0px 0px 1px rgba(85, 85, 85, 0.2);
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 0 auto;
+    margin-bottom: 0;
+}
 /** Responsive hacks **/
     .panel {
         background: $white-dank;
@@ -39,6 +49,7 @@
             flex-direction: row-reverse;
         }
     }
+
 /** End Responsive hacks **/
 .is-breathable {
     display: flex;
