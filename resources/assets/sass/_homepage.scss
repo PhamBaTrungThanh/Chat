@@ -2,7 +2,7 @@
 .main-content.with-sidebar {
     display: flex;
     flex-direction: row;
-
+    min-height: 100vh;
     #display_content {
         flex: 1 1 auto;
         border-left: 1px solid $grey-light;
@@ -10,16 +10,7 @@
         overflow-y: auto;
         padding-left: 3em;
         padding-right: 3em;
-        & > .no-conversation {
-            display: flex;
-            width: 100%;
-            min-height: 100%;
-            
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: $grey-light;
-        }
+
 
         header {
             @extend .title;
@@ -33,6 +24,16 @@
             padding-bottom: 0.5em;
             background: #ffffff;
         }
+    }
+    .no-conversation {
+        display: flex;
+        width: 100%;
+        min-height: 100%;
+        
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: $grey-light;
     }
 }
 

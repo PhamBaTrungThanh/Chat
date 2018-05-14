@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.page')
 @section('content')
 <div class="splash mobile-column-reverse">
     <div class="wellcome-header">

@@ -1,3 +1,6 @@
+html {
+    overflow: hidden;
+}
 
 .special-link {
     position: relative;
@@ -39,6 +42,9 @@ figure.avatar {
     }
 
     @media screen and (max-width: $desktop - 1px) {
+        html {
+            overflow-y: auto;
+        }
         .panel.is-responsive {
             margin: 10vh 20px;
         }

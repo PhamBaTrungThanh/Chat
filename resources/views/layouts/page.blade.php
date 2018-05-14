@@ -24,10 +24,8 @@
 <body>
     <div id="app">
         <main>
-            <div class="content main-content with-sidebar">
-                @include("components.sidebar")
-                @yield("content")
-            </div>
+            
+            @yield('content')
         </main>
     </div>
     @stack('bodyend')

@@ -79,7 +79,7 @@
                 margin-top: 0.1em;
             }
         }
-        #sidebar__conversations {
+        #sidebar__display {
             display: flex;
             flex-direction: column;
             flex: 1 1 auto;
@@ -88,12 +88,13 @@
                 align-items: center;
                 justify-content: center;
                 color: $grey-light;
-
-                & > .find-more {
-                    position: absolute;
-                    color: $grey-dark;
-                    top: 0.8em;
-                }
+            }
+            & > .find-more {
+                position: absolute;
+                color: $grey-dark;
+                top: 0.8em;
+                left: 0;
+                right: 0;
             }
         }
     }
@@ -101,6 +102,7 @@
 @media screen and (max-width: $desktop - 1px) {
     #main__sidebar {
         min-width: 100%;
+        min-height: unset;
     } 
     #waves > .wave {
         width: 150vw !important;

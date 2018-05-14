@@ -23,6 +23,7 @@
         "vue": "^2.5.7"
     },
     "dependencies": {
+        "@fortawesome/fontawesome": "^1.1.8",
         "bulma": "^0.7.1",
         "mo-js": "^0.288.2"
     }

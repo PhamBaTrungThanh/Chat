@@ -2119,6 +2119,10 @@ a.has-text-danger:focus {
   width: 128px;
 }
 
+html {
+  overflow: hidden;
+}
+
 .special-link {
   position: relative;
   z-index: 2;
@@ -2168,6 +2172,10 @@ figure.avatar {
 }
 
 @media screen and (max-width: 1087px) {
+  html {
+    overflow-y: auto;
+  }
+
   .panel.is-responsive {
     margin: 10vh 20px;
   }
@@ -2330,10 +2338,6 @@ figure.avatar {
     -webkit-transform: scale(1.2);
             transform: scale(1.2);
   }
-}
-
-html {
-  overflow: hidden;
 }
 
 h1,
@@ -4172,7 +4176,7 @@ h6,
   margin-top: 0.1em;
 }
 
-#main__sidebar #sidebar__content #sidebar__conversations {
+#main__sidebar #sidebar__content #sidebar__display {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -4186,7 +4190,7 @@ h6,
   position: relative;
 }
 
-#main__sidebar #sidebar__content #sidebar__conversations.no-conversation {
+#main__sidebar #sidebar__content #sidebar__display.no-conversation {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -4196,15 +4200,18 @@ h6,
   color: #D0D1CD;
 }
 
-#main__sidebar #sidebar__content #sidebar__conversations.no-conversation > .find-more {
+#main__sidebar #sidebar__content #sidebar__display > .find-more {
   position: absolute;
   color: #757763;
   top: 0.8em;
+  left: 0;
+  right: 0;
 }
 
 @media screen and (max-width: 1087px) {
   #main__sidebar {
     min-width: 100%;
+    min-height: unset;
   }
 
   #waves > .wave {
@@ -4268,6 +4275,7 @@ h6,
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
+  min-height: 100vh;
 }
 
 .main-content.with-sidebar #display_content {
@@ -4281,7 +4289,19 @@ h6,
   padding-right: 3em;
 }
 
-.main-content.with-sidebar #display_content > .no-conversation {
+.main-content.with-sidebar #display_content header {
+  border-bottom: 1px solid #D0D1CD;
+  margin-left: -3em;
+  margin-right: -3em;
+  text-align: center;
+  font-size: 1.2em;
+  font-weight: bold;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  background: #ffffff;
+}
+
+.main-content.with-sidebar .no-conversation {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -4295,18 +4315,6 @@ h6,
       -ms-flex-align: center;
           align-items: center;
   color: #D0D1CD;
-}
-
-.main-content.with-sidebar #display_content header {
-  border-bottom: 1px solid #D0D1CD;
-  margin-left: -3em;
-  margin-right: -3em;
-  text-align: center;
-  font-size: 1.2em;
-  font-weight: bold;
-  padding-top: 0.5em;
-  padding-bottom: 0.5em;
-  background: #ffffff;
 }
 
 @media screen and (max-width: 1087px) {
