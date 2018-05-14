@@ -107,7 +107,7 @@ return [
 
     'redis' => [
 
-        'client' => ($redisService) ? $username : 'predis',
+        'client' => ($redisService) ? false : 'predis',
 
         'default' => [
             'host' => env('REDIS_HOST', $host),
