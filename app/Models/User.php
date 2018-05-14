@@ -20,11 +20,8 @@ class User extends Authenticatable
     protected $attributes = [
         "avatar" => "images/default-avatar.png",
     ];
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
+    protected $with = ["conversations"];
+    protected $withCount = ["conversations"];
     protected $hidden = [
         'password', 'remember_token',
     ];
@@ -39,5 +36,9 @@ class User extends Authenticatable
         } else {
             return str_replace_first("image/upload/", "image/upload/" . config('images.avatar_transformation') . "/", $this->avatar);
         }
+    }
+    public function conversations()
+    {
+        return $this->belongsToMany(Conversation::class);
     }
 }
