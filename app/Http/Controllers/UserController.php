@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Events\UserUploadAvatar;
-
+use JD\Cloudder\Facades\Cloudder;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 
@@ -60,8 +60,11 @@ class UserController extends Controller
                         $path = $request->file('avatar')->store('avatars');
                         $user->avatar = asset($path);
                     } else {
-                        event(new UserUploadAvatar($user, $request->file('avatar')->getPathname()));
-                        $user->avatar()->update(["is_processing" => true]);
+                        //event(new UserUploadAvatar($user, $request->file('avatar')->getPathname()));
+                        $debug = (env('APP_DEBUG')) ? "debug/" : "";
+                        $cloudder = Cloudder::upload($request->file('avatar')->getPathname(), "{$debug}__user-{$user->id}__avatar");
+                        $result = Cloudder::getResult();
+                        $user->avatar = $result['url'];
                     }
                 }
             }

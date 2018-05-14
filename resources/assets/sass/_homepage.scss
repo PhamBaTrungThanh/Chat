@@ -14,6 +14,10 @@
         #user__info {
             background: $primary;
             max-height: 600px;
+            .name {
+                color: $white-dank;
+                margin: 30px 0 20px;
+            }
             .avatar {
                 width: 100px;
                 height: 100px;
@@ -22,13 +26,14 @@
                 box-shadow: 0px 0px 0px 1px rgba(85, 85, 85, 0.2);
                 border-radius: 50%;
                 overflow: hidden;
-                margin: 70px auto;
+                margin: 0 auto 70px;
             }
         }
         #waves {
             position: relative;
             width: 100%;
-            height: 120px;
+            z-index: 7;
+            transform: scaleX(1.8);
             & > .wave {
                 position: absolute;
                 width: 600px;
@@ -38,7 +43,7 @@
                 transform: translate(-50%, -50%) rotate(0);
                 border-radius: 40.5%;
               
-                background: $white-dank;
+                background: darken($white-dank, 1%);
                 opacity: .3;
                 animation: waves 4s infinite linear, wave-strength 5s infinite ease-in-out;
                 
@@ -54,8 +59,35 @@
             }
         }
         #sidebar__content {
-            margin-top: -110px;
-            background: $white-dank;
+            margin-top: -20px;
+            color: $primary;
+            z-index: 9;
+            #sidebar__menu {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 1.5em;
+                background: white;
+                padding: 10px 0;
+                a {
+                    color: $grey-light;
+                    margin: 0 0.5em;
+                    flex: 1 1 auto;
+                    text-align: center;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
+                a.active {
+                    color: $primary;
+                }
+                a:hover {
+                    color: $link;
+                }
+                a.chat-icon {
+                    margin-top: 0.1em;
+                }
+            }
         }
     }
 }

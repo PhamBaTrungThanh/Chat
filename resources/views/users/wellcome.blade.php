@@ -17,7 +17,7 @@
             </p>
             <form method="POST" action="{{ route('user.update', auth()->user())}}" enctype="multipart/form-data">
                 @csrf
-                <input type="hidden" name="_method" value="PUT" />
+                <input type="hidden" name="_method" value="PATCH" />
                 <input type="hidden" name="wellcome_update" value="true" />
                 <div class="field">
                     <div class="control">

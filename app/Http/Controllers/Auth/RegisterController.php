@@ -26,7 +26,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/wellcome';
+    protected $redirectTo = "wellcome";
     /**
      * Create a new controller instance.
      *
@@ -66,12 +66,10 @@ class RegisterController extends Controller
             'name' => $data['new_name'],
             'password' => bcrypt($data['new_password']),
         ]); 
-        $user->avatar()->create();
         return $user;
     }
     protected function registered($request, $user)
     {
         $request->session()->flash('new_user', 'true');
-        return redirect()->route("wellcome");
     }
 }

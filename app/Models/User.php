@@ -17,7 +17,9 @@ class User extends Authenticatable
     protected $fillable = [
         'name', 'email', 'password',
     ];
-    public $with = ["avatar"];
+    protected $attributes = [
+        "avatar" => "images/default-avatar.png",
+    ];
     /**
      * The attributes that should be hidden for arrays.
      *
@@ -26,11 +28,16 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
-    public function username() {
+    public function username() 
+    {
         return 'email';
     }
-    public function avatar()
+    public function getAvatarUrlAttribute()
     {
-        return $this->hasOne(Avatar::class);
+        if ($this->avatar === "images/default-avatar.png") {
+            return $this->avatar;
+        } else {
+            return str_replace_first("image/upload/", "image/upload/" . config('images.avatar_transformation') . "/", $this->avatar);
+        }
     }
 }
