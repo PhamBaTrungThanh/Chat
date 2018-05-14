@@ -4230,3 +4230,30 @@ h6,
   }
 }
 
+@media screen and (max-width: 1087px) {
+  .main-content.with-sidebar {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+
+  #main__sidebar {
+    min-width: 100%;
+  }
+
+  #waves > .wave {
+    width: 150vw !important;
+    height: 150vw !important;
+    top: 67vw !important;
+  }
+
+  .image.avatar {
+    margin-bottom: 14vw !important;
+  }
+
+  #main__chatbox {
+    border-left: none !important;
+  }
+}
+

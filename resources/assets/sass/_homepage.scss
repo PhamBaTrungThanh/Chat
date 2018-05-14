@@ -1,8 +1,8 @@
+
 .main-content.with-sidebar {
     display: flex;
     flex-direction: row;
-
-    #main__sidebar{
+    #main__sidebar {
         background: $white-dank;
         width: 300px;
         min-height: 100vh;
@@ -139,3 +139,23 @@
     }
 }
 
+@media screen and (max-width: $desktop - 1px) {
+    // responsive hacks
+    .main-content.with-sidebar  {
+        flex-direction: column;
+    }
+    #main__sidebar {
+        min-width: 100%;
+    } 
+    #waves > .wave {
+        width: 150vw !important;
+        height: 150vw !important;
+        top: 67vw !important;
+    }
+    .image.avatar {
+        margin-bottom: 14vw !important;
+    }
+    #main__chatbox {
+        border-left: none !important;
+    }
+}

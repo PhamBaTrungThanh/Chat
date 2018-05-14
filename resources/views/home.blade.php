@@ -51,7 +51,7 @@
         </section>
         <section role="chatbox" id="main__chatbox">
             @if (auth()->user()->conversations_count === 0)
-                <div class="no-conversation">
+                <div class="no-conversation is-hidden-touch">
                     <div>
                         <p class="has-text-centered is-size-4">{{__("Bạn chưa có cuộc trò chuyện nào.")}}</p>
                         <p class="has-text-centered is-size-4">{{__("Hãy tìm kiếm để thêm bạn và bắt đầu một cuộc trò chuyện nhé.")}}</p>
