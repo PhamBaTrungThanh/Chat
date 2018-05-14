@@ -107,7 +107,7 @@ return [
 
     'redis' => [
 
-        'client' => ($redisService) ? false : 'predis',
+        'client' => 'predis',
 
         'default' => [
             'host' => env('REDIS_HOST', $host),
