@@ -1,5 +1,6 @@
 <?php
-
+$redisService = env('REDIS_SERVICE_URL', false);
+list($scheme, $host, $port, $username, $password) = ($redisService) ? array_values(parse_url(env($redisService))) : array("", "", "", "", "");
 return [
 
     /*
@@ -106,12 +107,12 @@ return [
 
     'redis' => [
 
-        'client' => 'predis',
+        'client' => ($redisService) ? $username : 'predis',
 
         'default' => [
-            'host' => env('REDIS_HOST', '127.0.0.1'),
-            'password' => env('REDIS_PASSWORD', null),
-            'port' => env('REDIS_PORT', 6379),
+            'host' => env('REDIS_HOST', $host),
+            'password' => env('REDIS_PASSWORD', $password),
+            'port' => env('REDIS_PORT', $port),
             'database' => 0,
         ],
 
