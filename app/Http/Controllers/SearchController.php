@@ -22,17 +22,14 @@ class SearchController extends Controller
             'searchbox' => "required",
         ]);
         $result = false;
-        // first we query the email
-        if (filter_var($request->searchbox, FILTER_VALIDATE_EMAIL)) {
-            if ($request->searchbox !== auth()->user()->email) {
-                $result = User::where("email", $request->searchbox)->limit(1)->get();
-            }
-        }
-        if (!$result) {
-            $result = User::where("name", "like", "%{$request->searchbox}%")
-                            ->where("id" , "<>", auth()->user()->id)
-                            ->get();
-        }
+
+        $result = User::setEagerLoads([])
+                ->where("id" , "<>", auth()->user()->id)
+                ->where(function ($query) use ($request) {
+                    $query->where("email", $request->searchbox)
+                          ->orWhere("name", "like", "%{$request->searchbox}%");
+                })
+                ->get();
         return redirect()->route("search.result")->with(["result" => $result]);
 
     }

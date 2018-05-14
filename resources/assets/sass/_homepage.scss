@@ -10,7 +10,8 @@
         overflow-y: auto;
         padding-left: 3em;
         padding-right: 3em;
-
+        display: flex;
+        flex-direction: column;
 
         header {
             @extend .title;
@@ -29,7 +30,7 @@
         display: flex;
         width: 100%;
         min-height: 100%;
-        
+        flex: 1;
         display: flex;
         justify-content: center;
         align-items: center;

@@ -42,10 +42,24 @@
             @endforeach
         @endif
     </div>
-    <button type="submit" value="Đăng ký" class="button has-icon is-medium">
-        <span>Xác nhận</span>
-        <span class="icon">
-            <i class="fas fa-arrow-right"></i>
-        </span>
-    </button>
+    <div class="level">
+        <div class="level-left">
+            <div class="level-item">
+                <button type="submit" value="Đăng ký" class="button has-icon is-medium">
+                    <span>Xác nhận</span>
+                    <span class="icon">
+                        <i class="fas fa-arrow-right"></i>
+                    </span>
+                </button>
+            </div>
+        </div>
+        @if(active("register"))
+            <div class="level-right">
+                <div class="level-item">
+                    <a href="{{ route('login') }}" class=" is-hidden-touch">{{__('Quay về trang đăng nhập')}}</a>
+                </div>
+            </div>
+        @endif
+    </div>
+
 </form>

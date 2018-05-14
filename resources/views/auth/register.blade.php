@@ -9,7 +9,6 @@
             </figure>
             <h2 class="has-text-centered">{{ __('Đăng ký') }}</h2>
             @include('auth.register-form')
-            <h3 class="has-text-centered"><a href="{{ route('login') }}" class="">{{__('Quay về trang đăng nhập')}}</a></h3>
         </div>
     </div>
 

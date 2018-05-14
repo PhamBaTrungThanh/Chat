@@ -1,9 +1,15 @@
+@import "variables";
+
+
+// Import some of Bulma
+@import 'node_modules/bulma/sass/utilities/all';
+@import 'node_modules/bulma/sass/base/all';
 div.splash {
     display: flex;
     flex-direction: column;
 }
 
-.wellcome {
+#wellcome {
     padding: 2em 0;
 }
 .wellcome-header {
@@ -2701,11 +2707,14 @@ div.splash {
         border-color: transparent transparent #1B0B35 transparent;
     }
 }
-@media screen and (max-width: 55em) {
+@media screen and (max-width: $desktop - 1) {
 	#wellcome > .page {
-		padding: 2em 0 0 0;
+		padding: 1em 0 0 0;
 		height: auto;	
-    	transform: scale(0.8);
+    	transform: scale(0.6);
     	transform-origin: 50% 0;
-	}
+    }
+    .wellcome-header {
+        margin-top: -12em;
+    }
 }

@@ -5,7 +5,7 @@
             <img src="{{auth()->user()->avatarUrl}}" alt="User avatar">
         </figure>
     </div>
-    <div id="waves">
+    <div id="waves" class=" is-hidden-touch">
         <div class="wave wave--1"></div>
         <div class="wave wave--2"></div>
         <div class="wave wave--3"></div>
