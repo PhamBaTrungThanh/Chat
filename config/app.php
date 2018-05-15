@@ -160,6 +160,9 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        // Manually added provider
+        Hootlex\Friendships\FriendshipsServiceProvider::class,
+
     ],
 
     /*

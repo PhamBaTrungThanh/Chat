@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\User;
 
 use App\Models\User;
 use App\Events\UserUploadAvatar;
 use JD\Cloudder\Facades\Cloudder;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
-
+use App\Http\Controllers\Controller;
 class UserController extends Controller
 {
 

@@ -3,7 +3,7 @@
 @section('content')
 
 <section role="chatbox" id="display_content">
-    @if (auth()->user()->conversations_count === 0)
+    @if (auth()->user()->conversations->count() === 0)
         <div class="no-conversation">
             <div>
                 <p class="has-text-centered is-size-4">{{__("Bạn chưa có cuộc trò chuyện nào.")}}</p>
@@ -17,7 +17,7 @@
 
 @push("sidebar__display")
 <div id="sidebar__display">
-    @if (auth()->user()->conversations_count === 0) 
+    @if (auth()->user()->conversations->count() === 0) 
         <div class="no-conversation is-hidden-touch">
             <p class="has-text-centered is-size-4">{{__("Bạn chưa có cuộc trò chuyện nào.")}}</p>
         </div>

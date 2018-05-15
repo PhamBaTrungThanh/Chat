@@ -5,6 +5,11 @@
     margin-right: -15px;
     margin-bottom: 1em;
     position: relative;
+
+    &.is-marginless {
+        margin-left: 0;
+        margin-right: 0;
+    }
     .help {
         font-size: 0.9rem;
         padding: 0px 10px 5px;

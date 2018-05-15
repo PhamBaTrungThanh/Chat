@@ -16,11 +16,21 @@ Auth::routes();
 Route::get('/wellcome', 'HomeController@wellcome')->name('wellcome');
 Route::get('/splash', 'HomeController@splash')->name('splash');
 
-Route::resource('user', 'UserController')->except(['index', 'create', 'store']);
+Route::namespace('User')->group(function() {
+    
+    Route::prefix('user')->as('user.friend.')->group(function(){
+        Route::get('/friend', 'FriendController@index')->name('index');
+        Route::post('/friend/add/{friend}', 'FriendController@add')->name('add');
+        Route::post('/friend/accept/{friend}', 'FriendController@accept')->name('accept');
+        Route::post('/friend/cancel/{friend}', 'FriendController@cancel')->name('cancel');
+        Route::post('/friend/deny/{friend}', 'FriendController@accept')->name('deny');
+    });
+    Route::resource('user', 'UserController')->except(['index', 'create', 'store']);
+});
+
 Route::prefix('search')->as('search.')->group(function() {
     Route::get('', 'SearchController@index')->name('index');
     Route::post('', 'SearchController@submit')->name('submit');
-    Route::get('/result', 'SearchController@result')->name('result');
 });
 
 Route::get('/', 'HomeController@index')->name('index');

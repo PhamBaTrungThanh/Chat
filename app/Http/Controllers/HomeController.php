@@ -16,6 +16,7 @@ class HomeController extends Controller
         if (!auth()->user()) {
             return redirect('/splash');
         }
+        auth()->user()->loadMissing("conversations");
         return view('home');
     }
     public function splash()

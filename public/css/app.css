@@ -22,6 +22,7 @@
   }
 }
 
+.delete,
 .is-unselectable,
 .button {
   -webkit-touch-callout: none;
@@ -35,10 +36,99 @@
 .title:not(:last-child),
 .main-content.with-sidebar #display_content header:not(:last-child),
 .subtitle:not(:last-child),
-.content:not(:last-child) {
+.content:not(:last-child),
+.notification:not(:last-child),
+.block:not(:last-child),
+.highlight:not(:last-child) {
   margin-bottom: 1.5rem;
 }
 
+.delete {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  background-color: rgba(10, 10, 10, 0.2);
+  border: none;
+  border-radius: 290486px;
+  cursor: pointer;
+  display: inline-block;
+  -webkit-box-flex: 0;
+      -ms-flex-positive: 0;
+          flex-grow: 0;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+  font-size: 0;
+  height: 20px;
+  max-height: 20px;
+  max-width: 20px;
+  min-height: 20px;
+  min-width: 20px;
+  outline: none;
+  position: relative;
+  vertical-align: top;
+  width: 20px;
+}
+
+.delete::before,
+.delete::after {
+  background-color: white;
+  content: "";
+  display: block;
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateX(-50%) translateY(-50%) rotate(45deg);
+          transform: translateX(-50%) translateY(-50%) rotate(45deg);
+  -webkit-transform-origin: center center;
+          transform-origin: center center;
+}
+
+.delete::before {
+  height: 2px;
+  width: 50%;
+}
+
+.delete::after {
+  height: 50%;
+  width: 2px;
+}
+
+.delete:hover,
+.delete:focus {
+  background-color: rgba(10, 10, 10, 0.3);
+}
+
+.delete:active {
+  background-color: rgba(10, 10, 10, 0.4);
+}
+
+.is-small.delete {
+  height: 16px;
+  max-height: 16px;
+  max-width: 16px;
+  min-height: 16px;
+  min-width: 16px;
+  width: 16px;
+}
+
+.is-medium.delete {
+  height: 24px;
+  max-height: 24px;
+  max-width: 24px;
+  min-height: 24px;
+  min-width: 24px;
+  width: 24px;
+}
+
+.is-large.delete {
+  height: 32px;
+  max-height: 32px;
+  max-width: 32px;
+  min-height: 32px;
+  min-width: 32px;
+  width: 32px;
+}
+
+.loader,
 .button.is-loading::after {
   -webkit-animation: spinAround 500ms infinite linear;
           animation: spinAround 500ms infinite linear;
@@ -2119,6 +2209,136 @@ a.has-text-danger:focus {
   width: 128px;
 }
 
+.notification {
+  background-color: whitesmoke;
+  border-radius: 4px;
+  padding: 1.25rem 2.5rem 1.25rem 1.5rem;
+  position: relative;
+}
+
+.notification a:not(.button) {
+  color: currentColor;
+  text-decoration: underline;
+}
+
+.notification strong {
+  color: currentColor;
+}
+
+.notification code,
+.notification pre {
+  background: white;
+}
+
+.notification pre code {
+  background: transparent;
+}
+
+.notification > .delete {
+  position: absolute;
+  right: 0.5rem;
+  top: 0.5rem;
+}
+
+.notification .title,
+.notification .main-content.with-sidebar #display_content header,
+.main-content.with-sidebar #display_content .notification header,
+.notification .subtitle,
+.notification .content {
+  color: currentColor;
+}
+
+.notification.is-white {
+  background-color: white;
+  color: #0a0a0a;
+}
+
+.notification.is-black {
+  background-color: #0a0a0a;
+  color: white;
+}
+
+.notification.is-light {
+  background-color: whitesmoke;
+  color: #363636;
+}
+
+.notification.is-dark {
+  background-color: #363636;
+  color: whitesmoke;
+}
+
+.notification.is-primary {
+  background-color: #3a3e4b;
+  color: #fff;
+}
+
+.notification.is-link {
+  background-color: #FA7C91;
+  color: #fff;
+}
+
+.notification.is-info {
+  background-color: #fff670;
+  color: #fff;
+}
+
+.notification.is-success {
+  background-color: #23d160;
+  color: #fff;
+}
+
+.notification.is-warning {
+  background-color: #ffdd57;
+  color: rgba(0, 0, 0, 0.7);
+}
+
+.notification.is-danger {
+  background-color: #ff3860;
+  color: #fff;
+}
+
+.heading {
+  display: block;
+  font-size: 11px;
+  letter-spacing: 1px;
+  margin-bottom: 5px;
+  text-transform: uppercase;
+}
+
+.highlight {
+  font-weight: 400;
+  max-width: 100%;
+  overflow: hidden;
+  padding: 0;
+}
+
+.highlight pre {
+  overflow: auto;
+  max-width: 100%;
+}
+
+.number {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: whitesmoke;
+  border-radius: 290486px;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  font-size: 1.25rem;
+  height: 2em;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-right: 1.5rem;
+  min-width: 2.5em;
+  padding: 0.25rem 0.5rem;
+  text-align: center;
+  vertical-align: top;
+}
+
 html[role="app"] {
   overflow: hidden;
 }
@@ -2152,6 +2372,95 @@ figure.avatar {
   margin-bottom: 0;
 }
 
+/*** USER LIST ***/
+
+.user-cards {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  margin-left: -10px;
+  margin-right: -10px;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+
+.user-cards .user-card {
+  padding: 0 5px 10px;
+  -webkit-box-flex: 0;
+      -ms-flex-positive: 0;
+          flex-grow: 0;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+  width: 25%;
+}
+
+.user-cards .user-card > .card-content {
+  background: whitesmoke;
+  padding: 20px 10px;
+}
+
+.user-cards .user-card > .card-content .user-avatar {
+  margin-bottom: 1em;
+}
+
+.user-list {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+
+.user-list .user-list__item {
+  background: #eeeeee;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 10px;
+}
+
+.user-list .user-list__item .user__avatar {
+  margin-right: 20px;
+}
+
+.user-list .user-list__item .user__avatar figure.avatar {
+  width: 50px;
+  height: 50px;
+}
+
+.user-list .user-list__item > .card-content {
+  background: whitesmoke;
+  padding: 20px 10px;
+}
+
+.user-list .user-list__item > .card-content .user-avatar {
+  margin-bottom: 1em;
+}
+
 /** Responsive hacks **/
 
 .panel {
@@ -2171,7 +2480,7 @@ figure.avatar {
 
 @media screen and (max-width: 1087px) {
   html {
-    overflow-y: auto;
+    overflow-y: auto !important;
   }
 
   .panel.is-responsive {
@@ -2185,11 +2494,15 @@ figure.avatar {
             flex-direction: column-reverse !important;
   }
 
-  .mobile-rpw-reverse {
+  .mobile-row-reverse {
     -webkit-box-orient: horizontal;
     -webkit-box-direction: reverse;
         -ms-flex-direction: row-reverse;
             flex-direction: row-reverse;
+  }
+
+  .user-card {
+    width: 50% !important;
   }
 }
 
@@ -2372,6 +2685,11 @@ h6,
   margin-right: -15px;
   margin-bottom: 1em;
   position: relative;
+}
+
+.field.is-marginless {
+  margin-left: 0;
+  margin-right: 0;
 }
 
 .field .help {
@@ -4217,10 +4535,6 @@ h6,
     height: 150vw !important;
     top: 67vw !important;
   }
-
-  .image.avatar {
-    margin-bottom: 14vw !important;
-  }
 }
 
 @-webkit-keyframes waves {
@@ -4340,48 +4654,5 @@ h6,
 
 section[role="searchbox"] {
   padding-top: 5em;
-}
-
-section[role="searchbox"] .search-result {
-  width: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  margin-left: -10px;
-  margin-right: -10px;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-}
-
-section[role="searchbox"] .user-card {
-  padding: 0 5px 10px;
-  -webkit-box-flex: 1;
-      -ms-flex-positive: 1;
-          flex-grow: 1;
-  -ms-flex-negative: 0;
-      flex-shrink: 0;
-  width: 25%;
-}
-
-section[role="searchbox"] .user-card > .card-content {
-  background: whitesmoke;
-  padding: 20px 10px;
-}
-
-section[role="searchbox"] .user-card > .card-content .user-avatar {
-  margin-bottom: 1em;
-}
-
-@media screen and (max-width: 1087px) {
-  .user-card {
-    width: 50%;
-  }
 }
 

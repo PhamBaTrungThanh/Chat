@@ -14,27 +14,28 @@ class SearchController extends Controller
 
     public function index()
     {
-        return view('search.index');
+        list($pending, $awaiting) = auth()->user()->generateFriendsRelationships();
+        return view('search.index')->with([
+            "result" => session('result'),
+            "pending" => $pending,
+            "awaiting" => $awaiting,
+        ]);
     }
     public function submit(Request $request)
     {
         $request->validate([
             'searchbox' => "required",
         ]);
-        $result = false;
-
         $result = User::setEagerLoads([])
                 ->where("id" , "<>", auth()->user()->id)
+                ->whereNotIn("id", $request->user()->getFriends()->pluck('id'))
                 ->where(function ($query) use ($request) {
                     $query->where("email", $request->searchbox)
                           ->orWhere("name", "like", "%{$request->searchbox}%");
                 })
                 ->get();
-        return redirect()->route("search.result")->with(["result" => $result]);
+        return redirect()->route("search.index")->with(["result" => $result])->withInput();
 
     }
-    public function result(Request $request)
-    {
-        return view('search.index')->with(["result" => session('result')]);
-    }
+
 }

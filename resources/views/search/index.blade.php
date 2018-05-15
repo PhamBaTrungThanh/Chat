@@ -4,9 +4,9 @@
 <section role="searchbox" id="display_content">
     <form action="{{route('search.submit')}}" method="post">
         @csrf
-        <div class="field">
+        <div class="field is-marginless">
             <div class="control is-large is-bordered">
-                <input type="text" class="input" placeholder="@lang('search.placeholder')" name="searchbox" required>
+                <input type="text" class="input" placeholder="@lang('search.placeholder')" name="searchbox" required value="{{old('searchbox')}}">
             </div>
             <div class="control button-group">
                 <button type="submit" class="button has-icon is-medium">
@@ -18,27 +18,17 @@
             </div>
         </div>
     </form>
+    @if (session('alert'))
+        <div class="notification @if(session('alert_type')){{session('alert_type')}}@endif">
+            <button class="delete"></button>
+            {{ session('alert') }}
+        </div>
+    @endif
     @isset($result)
         <p class="title has-text-centered">
             {!! trans_choice('search.result', count($result), ['value' => count($result)]) !!}
         </p>
-        <div class="search-result">
-            @foreach($result as $user)
-                <div class="user-card">
-                    <div class="card-content">
-                        <figure class="avatar image user-avatar">
-                            <img src="{{ $user->avatar_url }}" alt="{{ $user->name}}'s Avatar'">
-                        </figure>
-                        <p class="user-name has-text-centered has-text-strong">
-                            {{$user->name}}
-                        </p>
-                        <div class="buttons is-centered">
-                            <button class="button is-primary">Kết bạn</button>
-                        </div>
-                    </div>
-                </div>
-            @endforeach
-        </div>
+        @include('components.userlist', ['users' => $result]);
     @endisset
 </section>
 @endsection

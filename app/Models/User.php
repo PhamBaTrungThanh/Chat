@@ -3,11 +3,12 @@
 namespace App\Models;
 
 use Illuminate\Notifications\Notifiable;
+use Hootlex\Friendships\Traits\Friendable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
-    use Notifiable;
+    use Notifiable, Friendable;
 
     /**
      * The attributes that are mass assignable.
@@ -20,8 +21,8 @@ class User extends Authenticatable
     protected $attributes = [
         "avatar" => "images/default-avatar.png",
     ];
-    protected $with = ["conversations"];
-    protected $withCount = ["conversations"];
+    // protected $with = ["conversations"];
+    // protected $withCount = ["conversations"];
     protected $hidden = [
         'password', 'remember_token',
     ];
@@ -41,4 +42,30 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Conversation::class);
     }
+    public function getFriendsAttribute()
+    {
+        return $this->getFriends();
+    }
+    public function generateFriendsRelationships()
+    {
+        $friendships = $this->getPendingFriendships();
+        $pending = [];
+        $awaiting = [];
+        foreach ($friendships as $friendship) {
+            if ($friendship->sender_id === $this->id) {
+                $pending[] = $friendship->recipient_id;
+                continue;
+            }
+            if ($friendship->recipient_id === $this->id) {
+                $awaiting[] = $friendship->sender_id;
+                continue;
+            }
+        }
+
+        return [
+            $pending,
+            $awaiting,
+        ];
+    }
+
 }

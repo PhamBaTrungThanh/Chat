@@ -17,9 +17,9 @@
                     <i class="far fw fa-comment-alt"></i>
                 </span>
             </a>
-            <a href="{{route('search.index')}}" class="search-icon {{active('search.*')}}">
+            <a href="{{route('user.friend.index')}}" class="{{active('user.friend.*')}}">
                 <span class="icon">
-                    <i class="fas fw fa-search "></i>
+                    <i class="fas fw fa-user-friends  "></i>
                 </span>                       
             </a>
             <a href="#settings" class="setting-icon {{active('settings.*')}}">

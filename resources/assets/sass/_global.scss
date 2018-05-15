@@ -27,6 +27,61 @@ figure.avatar {
     margin: 0 auto;
     margin-bottom: 0;
 }
+
+/*** USER LIST ***/
+
+.user-cards {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    margin-left: -10px;
+    margin-right: -10px;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    .user-card {
+        padding: 0 5px 10px;
+        flex-grow: 0;       
+        flex-shrink: 0;
+        width: 25%;
+        & > .card-content {
+            background: $white-ter;
+            padding: 20px 10px;
+            .user-avatar {
+                margin-bottom: 1em;
+            }
+        }
+    }
+}
+
+.user-list {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    .user-list__item {
+        background: #eeeeee;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        padding: 10px;
+        .user__avatar {
+            margin-right: 20px;
+            figure.avatar {
+                width: 50px;
+                height: 50px;
+            }
+        }
+        & > .card-content {
+            background: $white-ter;
+            padding: 20px 10px;
+            .user-avatar {
+                margin-bottom: 1em;
+            }
+        }
+    }
+}
 /** Responsive hacks **/
     .panel {
         background: $white-dank;
@@ -51,8 +106,11 @@ figure.avatar {
         .mobile-column-reverse {
             flex-direction: column-reverse !important;
         }
-        .mobile-rpw-reverse {
+        .mobile-row-reverse {
             flex-direction: row-reverse;
+        }
+        .user-card {
+            width: 50% !important;
         }
     }
 
