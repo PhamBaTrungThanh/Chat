@@ -43,7 +43,7 @@ figure.avatar {
 
     @media screen and (max-width: $desktop - 1px) {
         html {
-            overflow-y: auto;
+            overflow-y: auto !important;
         }
         .panel.is-responsive {
             margin: 10vh 20px;

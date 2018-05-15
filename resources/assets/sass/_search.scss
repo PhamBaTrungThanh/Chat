@@ -29,6 +29,6 @@ section[role="searchbox"] {
 
 @media screen and (max-width: $desktop - 1px) {
     .user-card {
-        width: 50%;
+        width: 50% !important;
     }
 }

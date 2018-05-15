@@ -32,6 +32,9 @@
                         <p class="user-name has-text-centered has-text-strong">
                             {{$user->name}}
                         </p>
+                        <div class="buttons is-centered">
+                            <button class="button is-primary">Kết bạn</button>
+                        </div>
                     </div>
                 </div>
             @endforeach
