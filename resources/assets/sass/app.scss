@@ -1,6 +1,6 @@
 
 // Fonts
-
+@import url('https://fonts.googleapis.com/css?family=Fira+Sans:400,700|Roboto+Condensed:400,700&subset=vietnamese');
 // Variables
 @import "variables";
 
@@ -9,11 +9,14 @@
 @import 'node_modules/bulma/sass/utilities/all';
 @import 'node_modules/bulma/sass/base/all';
 @import 'node_modules/bulma/sass/components/level';
+@import 'node_modules/bulma/sass/grid/columns';
+@import 'node_modules/bulma/sass/components/media';
 @import 'node_modules/bulma/sass/elements/title';
 @import 'node_modules/bulma/sass/elements/content';
 @import 'node_modules/bulma/sass/elements/icon';
 @import 'node_modules/bulma/sass/elements/image';
 @import 'node_modules/bulma/sass/elements/notification';
+
 @import 'node_modules/bulma/sass/elements/other';
 @import "global";
 @import "override";

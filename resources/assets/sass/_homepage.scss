@@ -14,16 +14,15 @@
         flex-direction: column;
 
         header {
-            @extend .title;
             border-bottom: 1px solid $grey-light;
             margin-left: -3em;
             margin-right: -3em;
             text-align: center;
-            font-size: 1.2em;
             font-weight: bold;
             padding-top: 0.5em;
             padding-bottom: 0.5em;
             background: #ffffff;
+            margin-bottom: 3em;
         }
     }
     .no-conversation {

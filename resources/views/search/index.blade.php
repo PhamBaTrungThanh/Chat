@@ -1,12 +1,15 @@
 @extends('layouts.app')
 
 @section('content')
-<section role="searchbox" id="display_content">
-    <form action="{{route('search.submit')}}" method="post">
+<section id="display_content">
+    <header>
+            <p class="title">@lang("Tìm kiếm")</p>
+    </header>
+    <form action="{{route('search.searching')}}" method="POST">
         @csrf
         <div class="field is-marginless">
             <div class="control is-large is-bordered">
-                <input type="text" class="input" placeholder="@lang('search.placeholder')" name="searchbox" required value="{{old('searchbox')}}">
+                <input type="text" class="input" placeholder="@lang('search.placeholder')" name="searchbox" required value="@isset($query){{$query}}@endisset">
             </div>
             <div class="control button-group">
                 <button type="submit" class="button has-icon is-medium">
@@ -28,7 +31,7 @@
         <p class="title has-text-centered">
             {!! trans_choice('search.result', count($result), ['value' => count($result)]) !!}
         </p>
-        @include('components.userlist', ['users' => $result]);
+        @include('components.usercards', ['users' => $result]);
     @endisset
 </section>
 @endsection

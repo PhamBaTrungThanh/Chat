@@ -20,17 +20,16 @@ Route::namespace('User')->group(function() {
     
     Route::prefix('user')->as('user.friend.')->group(function(){
         Route::get('/friend', 'FriendController@index')->name('index');
-        Route::post('/friend/add/{friend}', 'FriendController@add')->name('add');
-        Route::post('/friend/accept/{friend}', 'FriendController@accept')->name('accept');
-        Route::post('/friend/cancel/{friend}', 'FriendController@cancel')->name('cancel');
-        Route::post('/friend/deny/{friend}', 'FriendController@accept')->name('deny');
+        Route::post('/friend/submit', 'FriendController@submit')->name('submit');
+
     });
     Route::resource('user', 'UserController')->except(['index', 'create', 'store']);
 });
 
 Route::prefix('search')->as('search.')->group(function() {
-    Route::get('', 'SearchController@index')->name('index');
-    Route::post('', 'SearchController@submit')->name('submit');
+    Route::view('', 'search.index')->name('index');
+    Route::post('', 'SearchController@searching')->name('searching');
+    Route::get('/{q}', 'SearchController@result')->name('result');
 });
 
 Route::get('/', 'HomeController@index')->name('index');

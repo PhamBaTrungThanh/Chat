@@ -11,6 +11,59 @@ class FriendController extends Controller
     {
         $this->middleware("auth");
     }
+    public function submit(Request $request) 
+    {
+        $request->validate([
+            "friend_id" => "required|integer",
+            "action" => "required",
+        ]);
+        $friend = User::find($request->input('friend_id'));
+        $user = auth()->user();
+        switch ($request->input('action')) {
+            case 'ADD':
+                if ($user->hasSentFriendRequestTo($friend)) {
+                    session()->flash("alert", __("friend.requestalredysent", ["username" => $friend->name]));
+                    session()->flash("alert_type", "is-warning");
+                } else {
+                    $user->befriend($friend);
+                    session()->flash("alert", __("friend.requestsent", ["username" => $friend->name]));
+                }
+                break;
+            case 'ACCEPT':
+                if ($user->isFriendWith($friend)) {
+                    session()->flash("alert", __("friend.alreadyfriend", ["username" => $friend->name]));
+                    session()->flash("alert_type", "is-warning");
+                } else {
+                    $user->acceptFriendRequest($friend);
+                    session()->flash("alert", __("friend.befriend", ["username" => $friend->name]));
+                }
+                break;
+            case 'CANCEL':
+                if ($user->hasSentFriendRequestTo($friend)) {
+
+                    $user->cancelFriendRequest($friend);
+                    session()->flash("alert", __("friend.requestcanceled", ["username" => $friend->name]));
+                }
+                break;
+            case 'DENY':
+                    $user->denyFriendRequest($friend);
+                    session()->flash("alert", __("friend.requestdenied", ["username" => $friend->name]));
+                break;
+            case 'BLOCK':
+                $user->blockFriend($friend);
+                session()->flash("alert", __("friend.requestblocked", ["username" => $friend->name]));
+                break;  
+            case 'UNBLOCK':
+                $user->unblockFriend($friend);
+                session()->flash("alert", __("friend.requestunblocked", ["username" => $friend->name]));
+                break;                                       
+            default:
+                # code...
+                break;
+        }
+        return back();
+
+    }
     public function index(Request $request)
     {
         $list = auth()->user()->getAllFriendships();
@@ -18,24 +71,32 @@ class FriendController extends Controller
         $queries = [];
         list($pendingFriends, $friends, $rejectFriends, $blockedFriends) = array([],[],[],[]);
         foreach ($list as $friendship) {
+            $queries[] = ($userId === $friendship->sender_id) ? $friendship->recipient_id : $friendship->sender_id;
+        }
+        $users = User::whereIn('id', $queries)->get()->keyBy('id');
+        foreach ($list as $friendship) {
             $actor = ($userId === $friendship->sender_id) ? $friendship->recipient_id : $friendship->sender_id;
-            $queries[] = $actor;
+            $friend = $users[$actor];
             switch ($friendship->status) {
                 case 0:
                     # PENDING
-                    $pendingFriends[] = $actor;
+                    $friend->status = "PENDING";
+                    $pendingFriends[] = $friend;
                     break;
                 case 1:
-                    # PENDING
-                    $friends[] = $actor;
+                    # ACCEPTED 
+                    $friend->status = "ACCEPTED";
+                    $friends[] = $friend;
                     break;
                 case 2:
-                    # PENDING
-                    $rejectFriends[] = $actor;
+                    # DENIED
+                    $friend->status = "DENIED";
+                    $rejectFriends[] = $friend;
                     break;
                 case 3:
-                    # PENDING
-                    $blockedFriends[] = $actor;
+                    # BLOCKED
+                    $friend->status = "BLOCKED";
+                    $blockedFriends[] = $friend;
                     break;
 
                 default:
@@ -43,45 +104,17 @@ class FriendController extends Controller
                     break;
             }
         }
-        $users = User::whereIn('id', $queries)->get();
+        
         return view('friend.index')->with([
-            "pending" => $users->filter(function ($node) use ($pendingFriends){
-                return in_array($node->id, $pendingFriends);
-            }),
-            "friends" => $users->filter(function ($node) use ($friends){
-                return in_array($node->id, $friends);
-            }),
-            "rejects" => $users->filter(function ($node) use ($rejectFriends){
-                return in_array($node->id, $rejectFriends);
-            }),
+            "pending" => $pendingFriends,
+            "friends" => $friends,
+            "rejects" => $rejectFriends,
         ]);
-    }
-    public function add(Request $request, User $friend)
-    {
-        if (auth()->user()->hasSentFriendRequestTo($friend)) {
-            session()->flash("alert", __("friend.requestalredysent"));
-            session()->flash("alert_type", "is-warning");
-        } else {
-            auth()->user()->befriend($friend);
-            session()->flash("alert", __("friend.requestsent"));
-        }
-        return back()->withInput();
     }
     public function accept(Request $request, User $friend)
     {
-        if (auth()->user()->isFriendWith($friend)) {
-            session()->flash("alert", __("friend.alreadyfriend"));
-            session()->flash("alert_type", "is-warning");
-        } else {
-            auth()->user()->acceptFriendRequest($friend);
-            session()->flash("alert", __("friend.befriend"));
-        }
+
         return back()->withInput();
     }
-    public function cancel(Request $request, User $friend)
-    {
-        $friend->denyFriendRequest(auth()->user());
-        session()->flash("alert", __("friend.cancel"));
-        return back()->withInput();
-    }
+
 }

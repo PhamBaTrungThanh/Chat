@@ -1,36 +1,32 @@
-<div class="user-list">
+<div class="columns is-centered">
     @foreach($users as $user)
-        <div class="user-card">
-            <div class="card-content">
+        <div class="column is-half-table is-one-quarter-desktop user-card">
+            <div class="card-content content">
                 <figure class="avatar image user-avatar">
                     <img src="{{ $user->avatar_url }}" alt="{{ $user->name}}'s Avatar'">
                 </figure>
                 <p class="user-name has-text-centered has-text-strong">
                     {{$user->name}}
                 </p>
-                @if (!in_array($user->id, $pending))
-                    <div class="buttons is-centered">
-                        <form action="{{route('user.friend.add', $user->id)}}" method="post">
-                            @csrf
-                            <button class="button is-primary" type="submit">{{__("friend.add")}}</button>
-                        </form>
-                    </div>
-                @elseif (in_array($user->id, $awaiting))
-                    <div class="buttons is-centered">
-                        <form action="{{route('user.friend.accept', $user->id)}}" method="post">
-                            @csrf
-                            <button class="button is-link" type="submit">{{__("friend.accept")}}</button>
-                        </form>
-                    </div>                            
-                @else
-                <div class="buttons is-centered">
-                        <button class="button" disabled>{{__("friend.alreadyadd")}}</button>
-                        <form action="{{route('user.friend.cancel', $user->id)}}" method="post">
-                            @csrf
-                            <button class="button is-danger is-outlined" type="submit">{{__("friend.cancel")}}</button>
-                        </form>
-                    </div>                            
-                @endif
+                <form action="{{route('user.friend.submit')}}" method="post">
+                    @csrf
+                    <input type="hidden" name="friend_id" value="{{$user->id}}">
+                    @if (!$user->status)
+                        <div class="buttons is-centered">
+                            <button class="button is-primary" type="submit" name="action" value="ADD">{{__("friend.add")}}</button>
+                        </div>
+                    @elseif ($user->status === "AWAITING")
+                        <div class="buttons is-centered">
+                            <button class="button is-link" type="submit" name="action" value="ACCEPT">{{__("friend.accept")}}</button>
+                            <button class="button is-danger is-outlined" type="submit" name="action" value="REJECT">{{__("friend.reject")}}</button>
+                        </div>                            
+                    @elseif ($user->status === "PENDING")
+                        <div class="buttons is-centered">
+                            <button class="button" disabled>{{__("friend.alreadyadd")}}</button>
+                            <button class="button is-danger is-outlined" type="submit" name="action" value="CANCEL">{{__("friend.cancel")}}</button>
+                        </div>                            
+                    @endif
+                </form>
             </div>
         </div>
     @endforeach

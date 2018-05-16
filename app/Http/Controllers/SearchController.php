@@ -12,30 +12,38 @@ class SearchController extends Controller
         $this->middleware("auth");
     }
 
-    public function index()
-    {
-        list($pending, $awaiting) = auth()->user()->generateFriendsRelationships();
-        return view('search.index')->with([
-            "result" => session('result'),
-            "pending" => $pending,
-            "awaiting" => $awaiting,
-        ]);
-    }
-    public function submit(Request $request)
+
+    public function searching(Request $request)
     {
         $request->validate([
-            'searchbox' => "required",
+            "searchbox" => "required",
         ]);
+        return redirect()->route('search.result', ["query" => $request->input("searchbox")]);
+    }
+    public function result(Request $request, string $q)
+    {
+        list($awaiting, $friends, , $blocked, $pending) = auth()->user()->relationshipsIds;
         $result = User::setEagerLoads([])
                 ->where("id" , "<>", auth()->user()->id)
                 ->whereNotIn("id", $request->user()->getFriends()->pluck('id'))
-                ->where(function ($query) use ($request) {
-                    $query->where("email", $request->searchbox)
-                          ->orWhere("name", "like", "%{$request->searchbox}%");
+                ->where(function ($query) use ($q) {
+                    $query->where("email", $q)
+                          ->orWhere("name", "like", "%{$q}%");
                 })
                 ->get();
-        return redirect()->route("search.index")->with(["result" => $result])->withInput();
-
+        $result->each(function ($user) use ($awaiting, $friends, $blocked, $pending) {
+            if (in_array($user->id, $awaiting)) {
+                $user->status = "AWAITING";
+            } else if (in_array($user->id, $friends)) {
+                $user->status = "FRIEND";
+            } else if (in_array($user->id, $blocked)) {
+                $user->status = "BLOCKED";
+            } else if (in_array($user->id, $pending)) {
+                $user->status = "PENDING";
+            }
+            return $user;
+        });
+        return view('search.index')->withResult($result)->withQuery($q);
     }
 
 }
