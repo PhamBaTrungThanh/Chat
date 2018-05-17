@@ -26,6 +26,8 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public $friendshipsList, $awaitingCount;
     public function username() 
     {
         return 'email';
@@ -50,9 +52,32 @@ class User extends Authenticatable
     {
         return $this->findFriendship($recipient)->delete();
     }
+    public function getAllFriendshipsList()
+    {
+        if (blank($this->friendshipsList)) {
+            $this->friendshipsList = $this->getAllFriendships();
+        } 
+        return $this->friendshipsList;
+    }
+    public function getAwaitingCountAttribute()
+    {
+        if (blank($this->awaitingCount)) {
+            $list = $this->getAllFriendshipsList();
+            $count = 0;
+            foreach ($list as $friendship) {
+                if ($friendship->status === 0) {
+                    if ($this->id = $friendship->recipient_id) {
+                        $count++;
+                    }
+                }
+            }
+            $this->awaitingCount = $count;
+        }
+        return $this->awaitingCount;
+    }
     public function getRelationshipsIdsAttribute()
     {
-        $list = $this->getAllFriendships();
+        $list = $this->getAllFriendshipsList();
         $userIds = [];
         list($pendingFriends, $friends, $rejectFriends, $blockedFriends, $awaiting) = array([],[],[],[],[]);
 
@@ -88,6 +113,7 @@ class User extends Authenticatable
                     break;
             }
         }
+        $this->awaitingCount = count($awaiting);
         return [
             $awaiting,
             $friends,

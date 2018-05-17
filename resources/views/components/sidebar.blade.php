@@ -24,7 +24,12 @@
                 </a>
             <a href="{{route('user.friend.index')}}" class="{{active('user.friend.*')}}">
                 <span class="icon">
-                    <i class="fas fw fa-user-friends  "></i>
+                    <span class="fa-layers fa-fw" >
+                        <i class="fas fa-user-friends"></i>
+                        @if (auth()->user()->awaiting_count)
+                            <span class="fa-layers-counter overide">{{auth()->user()->awaiting_count}}</span>
+                        @endif
+                    </span>
                 </span>                       
             </a>
             <a href="#settings" class="setting-icon {{active('settings.*')}}">

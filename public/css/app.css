@@ -4558,6 +4558,13 @@ h6,
   font-weight: normal;
 }
 
+.fa-layers-counter.overide {
+  top: unset;
+  bottom: -1em;
+  -webkit-transform: scale(0.5);
+          transform: scale(0.5);
+}
+
 .primary-background {
   background: #3a3e4b;
 }
