@@ -26,11 +26,7 @@ Route::namespace('User')->group(function() {
     Route::resource('user', 'UserController')->except(['index', 'create', 'store']);
 });
 
-Route::prefix('search')->as('search.')->group(function() {
-    Route::view('', 'search.index')->name('index');
-    Route::post('', 'SearchController@searching')->name('searching');
-    Route::get('/{q}', 'SearchController@result')->name('result');
-});
+Route::get('/search', 'SearchController')->name('search');
 
 Route::get('/', 'HomeController@index')->name('index');
 Route::get('/logout', function () {

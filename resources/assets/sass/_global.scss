@@ -16,9 +16,8 @@ html[role="app"] {
     position: absolute;
     width: 1px;
 }
-figure.avatar {
-    width: 100px;
-    height: 100px; 
+.avatar {
+
     object-fit: cover;
     border: 2px solid #ffffff;
     //box-shadow: 0px 0px 0px 1px rgba(85, 85, 85, 0.2);
@@ -27,7 +26,12 @@ figure.avatar {
     margin: 0 auto;
     margin-bottom: 0;
 }
-
+figure.avatar {
+    width: 100px;
+    height: 100px;
+    margin-left: auto;
+    margin-right: auto;
+}
 /*** USER LIST ***/
 .user-card {
     padding: 0 5px 10px;

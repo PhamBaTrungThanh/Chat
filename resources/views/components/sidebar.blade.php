@@ -17,7 +17,7 @@
                     <i class="far fw fa-comment-alt"></i>
                 </span>
             </a>
-            <a href="{{route('search.index')}}" class="{{active('search.*')}}">
+            <a href="{{route('search')}}" class="{{active('search')}}">
                     <span class="icon">
                         <i class="fas fw fa-search"></i>
                     </span>                       

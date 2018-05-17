@@ -58,6 +58,7 @@ class User extends Authenticatable
 
         foreach ($list as $friendship) {
             $friendId = ($this->id === $friendship->sender_id) ? $friendship->recipient_id : $friendship->sender_id;
+            $userIds[] = $friendId;
             switch ($friendship->status) {
                 case 0:
                     # PENDING
@@ -92,48 +93,46 @@ class User extends Authenticatable
             $rejectFriends,
             $blockedFriends,
             $pendingFriends,
+            $userIds,
             $list,
         ];
     }
-    public function getRelationshipsAttribute()
+    public function getAllRelationshipModelsAttribute()
     {
-
-        $queries = [];
-        list($pendingFriends, $friends, $rejectFriends, $blockedFriends) = array([],[],[],[]);
-        foreach ($list as $friendship) {
-            $queries[] = ($userId === $friendship->sender_id) ? $friendship->recipient_id : $friendship->sender_id;
-        }
-        $users = User::whereIn('id', $queries)->get()->keyBy('id');
-        foreach ($list as $friendship) {
-            $actor = ($userId === $friendship->sender_id) ? $friendship->recipient_id : $friendship->sender_id;
-            $friend = $users[$actor];
-            switch ($friendship->status) {
-                case 0:
-                    # PENDING
-                    $friend->status = "PENDING";
-                    $pendingFriends[] = $friend;
-                    break;
-                case 1:
-                    # ACCEPTED 
-                    $friend->status = "ACCEPTED";
-                    $friends[] = $friend;
-                    break;
-                case 2:
-                    # DENIED
-                    $friend->status = "DENIED";
-                    $rejectFriends[] = $friend;
-                    break;
-                case 3:
-                    # BLOCKED
-                    $friend->status = "BLOCKED";
-                    $blockedFriends[] = $friend;
-                    break;
-                default:
-                    # AWAITING
-
-                    break;
+        list($awaitingModels, $friendsModels, $rejectedModels, $blockedModels, $pendingModels) = array([],[],[],[],[]);
+        list($awaiting, $friends, $rejected, $blocked, $pending, $ids) = $this->relationshipsIds;
+        $friendCollection = self::whereIn('id', $ids)->get();
+        foreach ($friendCollection as $aFriend) {
+            if (in_array($aFriend->id, $awaiting)) {
+                $aFriend->status = "AWAITING";
+                $awaitingModels[] = $aFriend;
+                continue;
+            } else if (in_array($aFriend->id, $friends)) {
+                $aFriend->status = "FRIEND";
+                $friendsModels[] = $aFriend;
+                continue;
+            } else if (in_array($aFriend->id, $rejected)) {
+                $aFriend->status = "REJECTED";
+                $rejectedModels[] = $aFriend;
+                continue;
+            } else if (in_array($aFriend->id, $blocked)) {
+                $aFriend->status = "BLOCKED";
+                $blockedModels[] = $aFriend;
+                continue;
+            } else if (in_array($aFriend->id, $pending)) {
+                $aFriend->status = "PENDING";
+                $pendingModels[] = $aFriend;
+                continue;
             }
         }
+        return [
+            collect($awaitingModels),
+            collect($friendsModels),
+            collect($rejectedModels),
+            collect($blockedModels),
+            collect($pendingModels),
+            $friendCollection,
+        ];        
     }
     public function generateFriendsRelationships()
     {

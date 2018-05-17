@@ -69,46 +69,13 @@ class FriendController extends Controller
         $list = auth()->user()->getAllFriendships();
         $userId = auth()->user()->id;
         $queries = [];
-        list($pendingFriends, $friends, $rejectFriends, $blockedFriends) = array([],[],[],[]);
-        foreach ($list as $friendship) {
-            $queries[] = ($userId === $friendship->sender_id) ? $friendship->recipient_id : $friendship->sender_id;
-        }
-        $users = User::whereIn('id', $queries)->get()->keyBy('id');
-        foreach ($list as $friendship) {
-            $actor = ($userId === $friendship->sender_id) ? $friendship->recipient_id : $friendship->sender_id;
-            $friend = $users[$actor];
-            switch ($friendship->status) {
-                case 0:
-                    # PENDING
-                    $friend->status = "PENDING";
-                    $pendingFriends[] = $friend;
-                    break;
-                case 1:
-                    # ACCEPTED 
-                    $friend->status = "ACCEPTED";
-                    $friends[] = $friend;
-                    break;
-                case 2:
-                    # DENIED
-                    $friend->status = "DENIED";
-                    $rejectFriends[] = $friend;
-                    break;
-                case 3:
-                    # BLOCKED
-                    $friend->status = "BLOCKED";
-                    $blockedFriends[] = $friend;
-                    break;
+        list($awaiting, $friends, $rejected, $blocked, $pending) = auth()->user()->allRelationshipModels;
 
-                default:
-                    # code...
-                    break;
-            }
-        }
-        
         return view('friend.index')->with([
-            "pending" => $pendingFriends,
+            "pending" => $pending,
+            "awaiting" => $awaiting,
             "friends" => $friends,
-            "rejects" => $rejectFriends,
+            "rejects" => $rejected,
         ]);
     }
     public function accept(Request $request, User $friend)

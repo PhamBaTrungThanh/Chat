@@ -4308,9 +4308,7 @@ html[role="app"] {
   width: 1px;
 }
 
-figure.avatar {
-  width: 100px;
-  height: 100px;
+.avatar {
   -o-object-fit: cover;
      object-fit: cover;
   border: 2px solid #ffffff;
@@ -4318,6 +4316,13 @@ figure.avatar {
   overflow: hidden;
   margin: 0 auto;
   margin-bottom: 0;
+}
+
+figure.avatar {
+  width: 100px;
+  height: 100px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /*** USER LIST ***/

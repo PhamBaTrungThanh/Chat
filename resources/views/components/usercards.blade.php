@@ -11,9 +11,9 @@
                 <form action="{{route('user.friend.submit')}}" method="post">
                     @csrf
                     <input type="hidden" name="friend_id" value="{{$user->id}}">
-                    @if (!$user->status)
+                    @if ($user->status === "FRIEND")
                         <div class="buttons is-centered">
-                            <button class="button is-primary" type="submit" name="action" value="ADD">{{__("friend.add")}}</button>
+                            <a class="button is-link" href="#">{{__("Trò chuyện")}}</a>
                         </div>
                     @elseif ($user->status === "AWAITING")
                         <div class="buttons is-centered">
@@ -24,7 +24,11 @@
                         <div class="buttons is-centered">
                             <button class="button" disabled>{{__("friend.alreadyadd")}}</button>
                             <button class="button is-danger is-outlined" type="submit" name="action" value="CANCEL">{{__("friend.cancel")}}</button>
-                        </div>                            
+                        </div>            
+                    @else
+                        <div class="buttons is-centered">
+                            <button class="button is-primary" type="submit" name="action" value="ADD">{{__("friend.add")}}</button>
+                        </div>                                
                     @endif
                 </form>
             </div>

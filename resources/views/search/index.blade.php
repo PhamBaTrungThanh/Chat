@@ -5,11 +5,10 @@
     <header>
             <p class="title">@lang("Tìm kiếm")</p>
     </header>
-    <form action="{{route('search.searching')}}" method="POST">
-        @csrf
+    <form method="GET">
         <div class="field is-marginless">
             <div class="control is-large is-bordered">
-                <input type="text" class="input" placeholder="@lang('search.placeholder')" name="searchbox" required value="@isset($query){{$query}}@endisset">
+                <input type="text" class="input" placeholder="@lang('search.placeholder')" name="q" required value="{{request()->input('q')}}">
             </div>
             <div class="control button-group">
                 <button type="submit" class="button has-icon is-medium">
@@ -27,11 +26,11 @@
             {{ session('alert') }}
         </div>
     @endif
-    @isset($result)
+    @if($result)
         <p class="title has-text-centered">
             {!! trans_choice('search.result', count($result), ['value' => count($result)]) !!}
         </p>
         @include('components.usercards', ['users' => $result]);
-    @endisset
+    @endif
 </section>
 @endsection
