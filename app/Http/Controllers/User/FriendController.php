@@ -68,9 +68,8 @@ class FriendController extends Controller
     {
         $list = auth()->user()->getAllFriendships();
         $userId = auth()->user()->id;
-        $queries = [];
-        list($awaiting, $friends, $rejected, $blocked, $pending) = auth()->user()->allRelationshipModels;
 
+        list($awaiting, $friends, $rejected, $blocked, $pending) = auth()->user()->allRelationshipModels;
         return view('friend.index')->with([
             "pending" => $pending,
             "awaiting" => $awaiting,

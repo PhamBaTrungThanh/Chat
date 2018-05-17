@@ -24,14 +24,14 @@
             @foreach ($awaiting as $user)
                 <article class="media">
                     <div class="media-left">
-                        <p class="image is-64x64">
+                        <p class="image is-64x64 avatar">
                             <img src="{{$user->avatarUrl}}" alt="Ảnh đại diện của {{$user->name}}">
                         </p>
                     </div>
                     <div class="media-content">
                         <div class="content">
                             <p>
-                                {!! __("friend.befriend", ["username" => $user->name]) !!}
+                                {!! __("friend.requestreceive", ["username" => $user->name]) !!}
                             </p>
                             <p>
                                 <form action="{{route('user.friend.submit')}}" method="post">
@@ -50,7 +50,7 @@
                 @foreach ($pending as $user)
                     <article class="media">
                         <div class="media-left">
-                            <p class="image is-64x64 is-rounded">
+                            <p class="image is-64x64 avatar">
                                 <img src="{{$user->avatarUrl}}" alt="Ảnh đại diện của {{$user->name}}">
                             </p>
                         </div>

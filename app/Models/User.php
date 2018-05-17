@@ -65,6 +65,7 @@ class User extends Authenticatable
                     if ($this->id === $friendship->sender_id) {
                         $pendingFriends[] = $friendship->recipient_id;
                     } else {
+                        # AWAITING
                         $awaiting[] = $friendship->sender_id;
                     }
                     break;

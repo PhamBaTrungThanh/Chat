@@ -51,27 +51,8 @@ figure.avatar {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: flex-start;
-    .user-list__item {
-        background: #eeeeee;
-        width: 100%;
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        padding: 10px;
-        .user__avatar {
-            margin-right: 1em;
-            figure.avatar {
-                width: 4.5em;
-                height: 4.5em;
-            }
-        }
-        & > .card-content {
-            background: $white-ter;
-            padding: 20px 10px;
-            .user-avatar {
-                margin-bottom: 1em;
-            }
-        }
+    & > * {
+        margin-bottom: 1em;
     }
 }
 /** Responsive hacks **/

@@ -4356,37 +4356,7 @@ figure.avatar {
           justify-content: flex-start;
 }
 
-.user-list .user-list__item {
-  background: #eeeeee;
-  width: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  padding: 10px;
-}
-
-.user-list .user-list__item .user__avatar {
-  margin-right: 1em;
-}
-
-.user-list .user-list__item .user__avatar figure.avatar {
-  width: 4.5em;
-  height: 4.5em;
-}
-
-.user-list .user-list__item > .card-content {
-  background: whitesmoke;
-  padding: 20px 10px;
-}
-
-.user-list .user-list__item > .card-content .user-avatar {
+.user-list > * {
   margin-bottom: 1em;
 }
 
