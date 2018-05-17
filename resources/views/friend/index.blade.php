@@ -18,7 +18,7 @@
 
 <div id="sidebar__display">
 
-    @if (count($pending) > 0)
+    @if (count($pending) > 0 || count($awaiting) > 0)
         <h5>Lời mời kết bạn</h4>    
         <div class="user-list">
             @foreach ($awaiting as $user)

@@ -66,9 +66,7 @@ class FriendController extends Controller
     }
     public function index(Request $request)
     {
-        $list = auth()->user()->getAllFriendships();
         $userId = auth()->user()->id;
-
         list($awaiting, $friends, $rejected, $blocked, $pending) = auth()->user()->allRelationshipModels;
         return view('friend.index')->with([
             "pending" => $pending,
@@ -77,10 +75,4 @@ class FriendController extends Controller
             "rejects" => $rejected,
         ]);
     }
-    public function accept(Request $request, User $friend)
-    {
-
-        return back()->withInput();
-    }
-
 }
