@@ -5,6 +5,9 @@ namespace App\Http\Controllers\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Notifications\FriendRequested;
+use App\Notifications\FrendAccepted;
+use App\Notifications\FrendRejected;
 class FriendController extends Controller
 {
     public function __construct()
@@ -25,6 +28,7 @@ class FriendController extends Controller
                     session()->flash("alert", __("friend.requestalredysent", ["username" => $friend->name]));
                     session()->flash("alert_type", "is-warning");
                 } else {
+                    $user->notify(new FriendRequested($friend));
                     $user->befriend($friend);
                     session()->flash("alert", __("friend.requestsent", ["username" => $friend->name]));
                 }
