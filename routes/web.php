@@ -20,6 +20,7 @@ Route::namespace('User')->group(function() {
     
     Route::prefix('user')->as('user.friend.')->group(function(){
         Route::get('/friend', 'FriendController@index')->name('index');
+        Route::get('friend/sidebar', 'FriendController@ajaxSidebar')->name('sidebar');
         Route::post('/friend/submit', 'FriendController@submit')->name('submit');
 
     });

@@ -1,4 +1,5 @@
-(function(){
+import mojs from "mo-js"
+export default function () {
 
 	function Animocon(el, options) {
 		this.el = el;
@@ -105,4 +106,4 @@
         });
     }
 
-})(window, mojs)
+}

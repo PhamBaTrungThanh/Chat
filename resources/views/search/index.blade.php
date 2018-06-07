@@ -30,7 +30,7 @@
         <p class="title has-text-centered">
             {!! trans_choice('search.result', count($result), ['value' => count($result)]) !!}
         </p>
-        @include('components.usercards', ['users' => $result]);
+        @include('components.usercards', ['users' => $result])
     @endif
 </section>
 @endsection

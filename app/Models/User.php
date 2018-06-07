@@ -32,6 +32,10 @@ class User extends Authenticatable
     {
         return 'email';
     }
+    public function receivesBroadcastNotificationsOn()
+    {
+        return 'App.User.'.$this->id;
+    }
     public function getAvatarUrlAttribute()
     {
         if ($this->avatar === "images/default-avatar.png") {
@@ -58,6 +62,16 @@ class User extends Authenticatable
             $this->friendshipsList = $this->getAllFriendships();
         } 
         return $this->friendshipsList;
+    }
+    public function getFriendRequestNotificationsAttribute()
+    {
+        $friendRequests = [];
+        foreach($this->unreadNotifications as $notification) {
+            if ($notification->type === "App\Notifications\FriendRequested") {
+                $friendRequests[] = $notification;
+            }
+        }
+        return collect($friendRequests);
     }
     public function getAwaitingCountAttribute()
     {

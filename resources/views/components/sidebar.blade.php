@@ -26,9 +26,7 @@
                 <span class="icon">
                     <span class="fa-layers fa-fw" >
                         <i class="fas fa-user-friends"></i>
-                        @if (auth()->user()->awaiting_count)
-                            <span class="fa-layers-counter overide">{{auth()->user()->awaiting_count}}</span>
-                        @endif
+                        <span class="fa-layers-counter overide" data-target="chatt.friendNotification" style="display: {{auth()->user()->friendRequestNotifications->count() === 0 ? "none" : "block"}}">{{auth()->user()->friendRequestNotifications->count()}}</span>
                     </span>
                 </span>                       
             </a>
