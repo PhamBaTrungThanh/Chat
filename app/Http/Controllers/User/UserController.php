@@ -96,4 +96,9 @@ class UserController extends Controller
     {
         //
     }
+
+    public function markRead(string $notification_id)
+    {
+        $notification = auth()->user()->notifications()->findOrFail($notification_id)->delete();
+    }
 }

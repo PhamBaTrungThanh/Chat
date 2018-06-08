@@ -7,7 +7,7 @@ use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Messages\BroadcastMessage;
-class FriendRequested extends Notification
+class BeFriendWith extends Notification
 {
     use Queueable;
 
@@ -17,6 +17,7 @@ class FriendRequested extends Notification
      * @return void
      */
     private $friend;
+
     public function __construct($friend)
     {
         $this->friend = $friend;
@@ -33,17 +34,11 @@ class FriendRequested extends Notification
         return ['database', 'broadcast'];
     }
 
-    /**
-     * Get the array representation of the notification.
-     *
-     * @param  mixed  $notifiable
-     * @return array
-     */
     public function toDatabase($notifiable)
     {
         return [
             "friend" => [
-                "id" => $this->friend->id
+                "id" => $this->friend->id,
             ],
         ];
     }
@@ -53,10 +48,10 @@ class FriendRequested extends Notification
             "friend" => [
                 "id" => $this->friend->id,
                 "name" => $this->friend->name,
+                "avatar" => $this->friend->avatar,
                 "url" => route("user.show", $this->friend),
-                "avatar" => $this->friend->avatarUrl,
             ],
-            "message" => __("friend.request.received", ["username" => $this->friend->name]),
+            "message" => __("friend.request.befriend", ["username" => $this->friend->name]),
         ]);
     }
 }

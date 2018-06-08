@@ -32,6 +32,7 @@
         "mo-js": "^0.288.2",
         "pusher-js": "^4.2.2",
         "stimulus": "^1.0.1",
+        "toastify-js": "https://github.com/PhamBaTrungThanh/toastify-js.git",
         "turbolinks": "^5.1.1"
     }
 }

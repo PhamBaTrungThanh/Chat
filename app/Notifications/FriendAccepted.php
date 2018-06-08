@@ -49,6 +49,7 @@ class FriendAccepted extends Notification
                 "id" => $this->friend->id,
                 "name" => $this->friend->name,
                 "url" => route("user.show", $this->friend),
+                "avatar" => $this->friend->avatarUrl,
             ],
             "message" => __("friend.request.accepted", ["username" => $this->friend->name]),
         ]);

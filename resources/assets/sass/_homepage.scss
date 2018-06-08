@@ -7,12 +7,12 @@
         flex: 1 1 auto;
         border-left: 1px solid $grey-light;
         background: $white-dank;
-        overflow-y: auto;
+        // overflow-y: auto;
         padding-left: 3em;
         padding-right: 3em;
         display: flex;
         flex-direction: column;
-
+        padding-bottom: 50px;
         header {
             border-bottom: 1px solid $grey-light;
             margin-left: -3em;

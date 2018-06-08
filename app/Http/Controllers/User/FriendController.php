@@ -9,6 +9,7 @@ use App\Notifications\FriendRequested;
 use App\Notifications\FriendAccepted;
 use App\Notifications\FriendRejected;
 use App\Notifications\FriendRequestCanceled;
+use App\Notifications\BeFriendWith;
 class FriendController extends Controller
 {
     public function __construct()
@@ -40,9 +41,10 @@ class FriendController extends Controller
                     session()->flash("alert_type", "is-warning");
                 } else {
                     $user->acceptFriendRequest($friend);
-                    $friend->notifications()->where("data->friend->id", $user->id)
+                    $user->notifications()->where("data->friend->id", $friend->id)
                                           ->where("type", FriendRequested::class)->delete();
                     $friend->notify(new FriendAccepted($user));
+                    $user->notify(new FriendAccepted($friend));
                     session()->flash("alert", __("friend.befriend", ["username" => $friend->name]));
                 }
                 break;

@@ -4325,6 +4325,12 @@ figure.avatar {
   margin-right: auto;
 }
 
+/*** HELPERS ***/
+
+.is-relative {
+  position: relative;
+}
+
 /*** USER LIST ***/
 
 .user-card {
@@ -4358,6 +4364,7 @@ figure.avatar {
 
 .user-list > * {
   margin-bottom: 1em;
+  width: 100%;
 }
 
 /** Responsive hacks **/
@@ -4543,6 +4550,119 @@ figure.avatar {
     opacity: 0;
     -webkit-transform: scale(1.2);
             transform: scale(1.2);
+  }
+}
+
+/*!
+ * Toastify js 1.2.2
+ * https://github.com/apvarun/toastify-js
+ * @license MIT licensed
+ *
+ * Copyright (C) 2018 Varun A P
+ */
+
+.toastify {
+  padding: 12px 20px;
+  color: #ffffff;
+  display: inline-block;
+  -webkit-box-shadow: 0 3px 6px -1px rgba(58, 62, 75, 0.12), 0 10px 36px -4px rgba(58, 62, 75, 0.3);
+          box-shadow: 0 3px 6px -1px rgba(58, 62, 75, 0.12), 0 10px 36px -4px rgba(58, 62, 75, 0.3);
+  background: linear-gradient(135deg, #3a3e4b, #333742);
+  position: fixed;
+  opacity: 0;
+  -webkit-transition: all 0.4s cubic-bezier(0.215, 0.61, 0.355, 1);
+  transition: all 0.4s cubic-bezier(0.215, 0.61, 0.355, 1);
+  border-radius: 2px;
+  cursor: pointer;
+  text-decoration: none;
+  max-width: calc(50% - 20px);
+  padding-right: 60px;
+}
+
+.toastify.success {
+  -webkit-box-shadow: 0 3px 6px -1px rgba(35, 209, 96, 0.12), 0 10px 36px -4px rgba(35, 209, 96, 0.3);
+          box-shadow: 0 3px 6px -1px rgba(35, 209, 96, 0.12), 0 10px 36px -4px rgba(35, 209, 96, 0.3);
+  background: linear-gradient(135deg, #23d160, #21c45a);
+}
+
+.toastify.link {
+  -webkit-box-shadow: 0 3px 6px -1px rgba(250, 124, 145, 0.12), 0 10px 36px -4px rgba(250, 124, 145, 0.3);
+          box-shadow: 0 3px 6px -1px rgba(250, 124, 145, 0.12), 0 10px 36px -4px rgba(250, 124, 145, 0.3);
+  background: linear-gradient(135deg, #FA7C91, #f96d85);
+}
+
+.toastify.info {
+  -webkit-box-shadow: 0 3px 6px -1px rgba(255, 246, 112, 0.12), 0 10px 36px -4px rgba(255, 246, 112, 0.3);
+          box-shadow: 0 3px 6px -1px rgba(255, 246, 112, 0.12), 0 10px 36px -4px rgba(255, 246, 112, 0.3);
+  background: linear-gradient(135deg, #fff670, #fff561);
+}
+
+.toastify.danger {
+  -webkit-box-shadow: 0 3px 6px -1px rgba(255, 56, 96, 0.12), 0 10px 36px -4px rgba(255, 56, 96, 0.3);
+          box-shadow: 0 3px 6px -1px rgba(255, 56, 96, 0.12), 0 10px 36px -4px rgba(255, 56, 96, 0.3);
+  background: linear-gradient(135deg, #ff3860, #ff2954);
+}
+
+.toastify.warning {
+  -webkit-box-shadow: 0 3px 6px -1px rgba(255, 221, 87, 0.12), 0 10px 36px -4px rgba(255, 221, 87, 0.3);
+          box-shadow: 0 3px 6px -1px rgba(255, 221, 87, 0.12), 0 10px 36px -4px rgba(255, 221, 87, 0.3);
+  background: linear-gradient(135deg, #ffdd57, #ffda47);
+}
+
+.toastify.right {
+  right: 15px;
+}
+
+.toastify.left {
+  left: 15px;
+}
+
+.toastify.top {
+  top: -150px;
+}
+
+.toastify.bottom {
+  bottom: -150px;
+}
+
+.toastify.rounded {
+  border-radius: 25px;
+}
+
+.toastify .avatar {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  display: block;
+  right: 0;
+  border: none;
+  border-radius: 0 2px 2px 0;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: auto;
+}
+
+.toastify .toast-close {
+  opacity: 0.4;
+  padding: 0 5px;
+}
+
+.toastify.on {
+  opacity: 1;
+  z-index: 99;
+}
+
+@media only screen and (max-width: 360px) {
+  .toastify .right,
+  .toastify .left {
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    max-width: -webkit-fit-content;
+    max-width: -moz-fit-content;
+    max-width: fit-content;
   }
 }
 
@@ -6403,7 +6523,7 @@ h6,
       -ms-flex: 1 1 auto;
           flex: 1 1 auto;
   position: relative;
-  padding: 30px 15px;
+  padding: 10px 15px 30px 15px;
 }
 
 #main__sidebar #sidebar__content #sidebar__display.no-conversation {
@@ -6422,6 +6542,18 @@ h6,
   top: 0.8em;
   left: 0;
   right: 0;
+}
+
+.user-list .media.is-highlight:after {
+  display: block;
+  content: "";
+  background-color: lightyellow;
+  position: absolute;
+  top: -10px;
+  left: -15px;
+  bottom: -10px;
+  right: -15px;
+  z-index: -1;
 }
 
 @media screen and (max-width: 1087px) {
@@ -6496,7 +6628,6 @@ h6,
           flex: 1 1 auto;
   border-left: 1px solid #D0D1CD;
   background: #fafafa;
-  overflow-y: auto;
   padding-left: 3em;
   padding-right: 3em;
   display: -webkit-box;
@@ -6506,6 +6637,7 @@ h6,
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  padding-bottom: 50px;
 }
 
 .main-content.with-sidebar #display_content header {

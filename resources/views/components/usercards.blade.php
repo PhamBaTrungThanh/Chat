@@ -13,7 +13,7 @@
                     <input type="hidden" name="friend_id" value="{{$user->id}}">
                     @if ($user->status === "FRIEND")
                         <div class="buttons is-centered">
-                            <a class="button is-link" href="#">{{__("Trò chuyện")}}</a>
+                            <a class="button is-link" href="{{route('conversation.with', ["friend" => $user->id])}}">{{__("Trò chuyện")}}</a>
                         </div>
                     @elseif ($user->status === "AWAITING")
                         <div class="buttons is-centered">

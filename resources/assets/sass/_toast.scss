@@ -1,0 +1,102 @@
+/*!
+ * Toastify js 1.2.2
+ * https://github.com/apvarun/toastify-js
+ * @license MIT licensed
+ *
+ * Copyright (C) 2018 Varun A P
+ */
+
+ .toastify {
+    padding: 12px 20px;
+    color: #ffffff;
+    display: inline-block;
+    box-shadow: 0 3px 6px -1px rgba($primary, 0.12), 0 10px 36px -4px rgba($primary, 0.3);
+    background: linear-gradient(135deg, $primary, darken($primary, 3%));
+    position: fixed;
+    opacity: 0;
+    transition: all 0.4s cubic-bezier(0.215, 0.61, 0.355, 1);
+    border-radius: 2px;
+    cursor: pointer;
+    text-decoration: none;
+    max-width: calc(50% - 20px);
+    padding-right: 60px;
+    &.success {
+        box-shadow: 0 3px 6px -1px rgba($success, 0.12), 0 10px 36px -4px rgba($success, 0.3);
+        background: linear-gradient(135deg, $success, darken($success, 3%));        
+    }
+    &.link {
+        box-shadow: 0 3px 6px -1px rgba($link, 0.12), 0 10px 36px -4px rgba($link, 0.3);
+        background: linear-gradient(135deg, $link, darken($link, 3%));        
+    }
+    &.info {
+        box-shadow: 0 3px 6px -1px rgba($info, 0.12), 0 10px 36px -4px rgba($info, 0.3);
+        background: linear-gradient(135deg, $info, darken($info, 3%));        
+    }
+    &.danger {
+        box-shadow: 0 3px 6px -1px rgba($danger, 0.12), 0 10px 36px -4px rgba($danger, 0.3);
+        background: linear-gradient(135deg, $danger, darken($danger, 3%));        
+    }
+    &.warning {
+        box-shadow: 0 3px 6px -1px rgba($warning, 0.12), 0 10px 36px -4px rgba($warning, 0.3);
+        background: linear-gradient(135deg, $warning, darken($warning, 3%));        
+    }
+    
+    &.right {
+        right: 15px;
+    }
+    
+    &.left {
+        left: 15px;
+    }
+    
+    &.top {
+        top: -150px;
+    }
+    
+    &.bottom {
+        bottom: -150px;
+    }
+    
+    &.rounded {
+        border-radius: 25px;
+    }
+    .avatar {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        display: block;
+        right: 0;
+        border: none;
+        border-radius: 0 2px 2px 0;
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        width: auto;
+    }
+
+    .toast-close {
+        opacity: 0.4;
+        padding: 0 5px;
+    }
+
+    
+}
+
+.toastify.on {
+    opacity: 1;
+    z-index: 99;
+}
+
+
+@media only screen and (max-width: 360px) {
+    .toastify {
+        .right, .left {
+            margin-left: auto;
+            margin-right: auto;
+            left: 0;
+            right: 0;
+            max-width: fit-content;
+        }
+    }
+
+}

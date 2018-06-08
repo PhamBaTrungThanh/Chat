@@ -27,7 +27,14 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public $friendshipsList, $awaitingCount;
+    /* eloquent magic base */
+    public function conversations()
+    {
+        return $this->belongsToMany(Conversation::class);
+    }
+    public function conversationWith(self $friend) {
+        return $this->conversations()->wherePivot("user_id", $friend->id)->where("type", "single")->limit(1);
+    }
     public function username() 
     {
         return 'email';
@@ -41,13 +48,35 @@ class User extends Authenticatable
         if ($this->avatar === "images/default-avatar.png") {
             return asset($this->avatar);
         } else {
-            return str_replace_first("image/upload/", "image/upload/" . config('images.avatar_transformation') . "/", $this->avatar);
+            $url = str_replace_first("image/upload/", "image/upload/" . config('images.avatar_transformation') . "/", $this->avatar);
+            $url = str_replace_first("http://", "//", $url);
+            return $url;
         }
     }
-    public function conversations()
+    /* Notifications Magic */
+    public function getNewFriendsAttribute()
     {
-        return $this->belongsToMany(Conversation::class);
+        $newFriends = [];
+        $newFriendNotifications = [];
+        foreach ($this->notifications as $notification) {
+            if ($notification->type === "App\Notifications\FriendAccepted") {
+                if ($notification->created_at->isToday() || $notification->created_at->isYesterday()) {
+                    $newFriends[] = $notification->data['friend']['id'];
+                    $newFriendNotifications[] = $notification->id;
+                }
+            }
+        }
+        if (filled($newFriends)) {
+            return self::whereIn("id", $newFriends)->get()->map(function ($item, $key) use ($newFriendNotifications) {
+                $item->notification_id = $newFriendNotifications[$key];
+                return $item;
+            });
+        }
+        return [];
     }
+
+    /* Friendable Trail */
+    public $friendshipsList, $awaitingCount;
     public function getFriendsAttribute()
     {
         return $this->getFriends();

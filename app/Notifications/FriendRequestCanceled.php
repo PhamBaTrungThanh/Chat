@@ -36,6 +36,7 @@ class FriendRequestCanceled extends Notification
     {
         return new BroadcastMessage([
             "canceled" => true,
+            "message" => __("friend.request.canceled")
         ]);
     }
 }
