@@ -12,7 +12,7 @@
     </div>
     <div id="sidebar__content" class="">
         <div id="sidebar__menu">
-            <a href="{{route('index')}}" class="{{active('index')}} chat-icon">
+            <a href="{{route('index')}}" class="{{active('conversation.*')}} chat-icon">
                 <span class="icon">
                     <i class="far fw fa-comment-alt"></i>
                 </span>

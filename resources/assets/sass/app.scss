@@ -18,6 +18,7 @@
 @import 'node_modules/bulma/sass/elements/notification';
 
 @import 'node_modules/bulma/sass/elements/other';
+
 @import "global";
 @import "toast";
 @import "override";
@@ -29,3 +30,4 @@
 @import "sidebar";
 @import "homepage";
 @import "search";
+@import "conversations";

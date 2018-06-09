@@ -10,6 +10,10 @@ use Carbon\Carbon;
 use App\Http\Controllers\Controller;
 class UserController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware("auth");
+    }
 
     /**
      * Display the specified resource.

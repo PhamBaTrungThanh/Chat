@@ -32,9 +32,6 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Conversation::class);
     }
-    public function conversationWith(self $friend) {
-        return $this->conversations()->wherePivot("user_id", $friend->id)->where("type", "single")->limit(1);
-    }
     public function username() 
     {
         return 'email';

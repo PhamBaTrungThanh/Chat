@@ -8,6 +8,10 @@ use Illuminate\Http\Request;
 
 class ConversationController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware("auth");
+    }
     /**
      * Display a listing of the resource.
      *
@@ -25,7 +29,7 @@ class ConversationController extends Controller
      */
     public function with(User $friend)
     {
-        $conversation = auth()->user()->conversationWith($friend)->get();
+        $conversation = Conversation::Single([auth()->user()->id, $friend->id])->first();
         if (!$conversation) {
             $conversation = new Conversation;
             $conversation->type = "single";
@@ -54,7 +58,7 @@ class ConversationController extends Controller
      */
     public function show(Conversation $conversation)
     {
-        return view("conversation.index");
+        return view("conversation.show")->withConversation($conversation);
     }
 
     /**
