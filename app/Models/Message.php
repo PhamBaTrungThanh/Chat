@@ -8,7 +8,10 @@ class Message extends Model
 {
     protected $fillable = ["body", "conversation_id", "user_id"];
     protected $touches = ['conversation'];
-
+    protected $casts = [
+        "user_id" => "integer",
+        "conversation_id" => "integer"
+    ];
     public function conversation()
     {
         return $this->belongsTo(Conversation::class);
