@@ -23,8 +23,14 @@ class ConversationController extends Controller
      */
     public function index()
     {
-        $latest = auth()->user()->conversations()->latest("updated_at")->first();
-        return redirect()->route("conversation.show", $latest);
+        $latest = auth()->user()->conversations()->has("messages")->latest("updated_at")->count();
+        if ($latest) {
+            return redirect()->route("conversation.show", $latest);
+        }
+        else {
+            return view("conversation.index");
+        }
+
     }
     
     /**
@@ -106,15 +112,17 @@ class ConversationController extends Controller
     public function message(Conversation $conversation, Request $request)
     {
         if ($conversation->users()->where("id", auth()->user()->id)) {
+            $body = clean($request->message, array("HTML.Allowed" => "br"));
             $message = new Message;
+
             $message->fill([
-                "body" => clean($request->message, array("HTML.Allowed" => "br")),
+                "body" => $body,
                 "conversation_id" => $conversation->id,
                 "user_id" => auth()->user()->id,
             ]);
             $message->save();
             //$conversation->notify(new ConversationUpdated($message, auth()->user()));
-            Notification::send($conversation->toOthers(), new MessagePosted($message, auth()->user()));
+            Notification::send($conversation->toOthers(), new MessagePosted($conversation, $body, auth()->user()));
         } else {
             abort(401);
         }

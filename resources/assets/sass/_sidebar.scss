@@ -60,6 +60,7 @@
             font-size: 1.5em;
             background: white;
             padding: 10px 0;
+            height: 2em;
             a {
                 color: $grey-light;
                 margin: 0 0.5em;
@@ -84,7 +85,7 @@
             flex-direction: column;
             flex: 1 1 auto;
             position: relative;
-            padding: 10px 15px 30px 15px;
+            padding: 0;
             &.no-conversation {
                 align-items: center;
                 justify-content: center;
@@ -117,13 +118,8 @@
         min-width: 100%;
         min-height: unset;
     } 
-    #waves > .wave {
-        width: 150vw !important;
-        height: 150vw !important;
-        top: 67vw !important;
-    }
-    .image.avatar {
-//        margin-bottom: 14vw !important;
+    #sidebar__content {
+        margin-top: 0px !important;
     }
 }
 @keyframes waves {

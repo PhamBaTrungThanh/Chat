@@ -3,8 +3,8 @@
 <svg xmlns="http://www.w3.org/2000/svg">
 <metadata>Copyright (C) 2018 by original authors @ fontello.com</metadata>
 <defs>
-<font id="chatt" horiz-adv-x="1000" >
-<font-face font-family="chatt" font-weight="400" font-stretch="normal" units-per-em="1000" ascent="850" descent="-150" />
+<font id="fontello" horiz-adv-x="1000" >
+<font-face font-family="fontello" font-weight="400" font-stretch="normal" units-per-em="1000" ascent="850" descent="-150" />
 <missing-glyph horiz-adv-x="1000" />
 <glyph glyph-name="user" unicode="&#xe800;" d="M714 69q0-60-35-104t-84-44h-476q-49 0-84 44t-35 104q0 48 5 90t17 85 33 73 52 50 76 19q73-72 174-72t175 72q42 0 75-19t52-50 33-73 18-85 4-90z m-143 495q0-88-62-151t-152-63-151 63-63 151 63 152 151 63 152-63 62-152z" horiz-adv-x="714.3" />
 
@@ -21,6 +21,8 @@
 <glyph glyph-name="pencil" unicode="&#xe806;" d="M0-119l60 281 627 628q21 21 51 21t50-20l121-122q21-21 21-50t-21-50l-628-628z m68 69l194 44 24 25-149 149-24-24z" horiz-adv-x="930.2" />
 
 <glyph glyph-name="check-empty" unicode="&#xe807;" d="M0-150l0 1000 1000 0 0-1000-1000 0z m164 164l672 0 0 672-672 0 0-672z" horiz-adv-x="1000" />
+
+<glyph glyph-name="menu" unicode="&#xf008;" d="M68 62q0-30 21-51t51-21h793q30 0 51 21t21 51-21 51-51 21h-793q-29 0-51-21t-21-51z m0 288q0-30 21-51t51-21h793q30 0 51 21t21 51-21 51-51 21h-793q-29 0-51-21t-21-51z m0 288q0-30 21-51t51-21h793q30 0 51 21t21 51-21 51-51 21h-793q-29 0-51-21t-21-51z" horiz-adv-x="1073.2" />
 
 <glyph glyph-name="chat" unicode="&#xf03d;" d="M0 480q0 107 68 199t186 145 255 53q104 0 198-32t162-84 108-127 41-154q0-65-26-126t-73-109-109-86-140-57-161-20q-103 0-194 30l-116-81q-65-42-91-25t-11 97l23 121q-57 53-88 119t-32 137z m650-468q118 23 215 82t158 145 75 186q89-35 142-102t54-147q0-49-22-96t-62-83l17-86q10-55-8-67t-64 17l-82 57q-63-21-136-21-87 0-163 31t-124 84z" horiz-adv-x="1294.4" />
 

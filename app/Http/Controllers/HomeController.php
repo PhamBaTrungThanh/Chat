@@ -15,15 +15,9 @@ class HomeController extends Controller
     {
         if (!auth()->user()) {
             return redirect('/splash');
+        } else {
+            return redirect()->route("conversation.index");
         }
-        $latest = auth()->user()->conversations()->latest("updated_at")->first();
-        if ($latest) {
-            return redirect()->route("conversation.show", $latest);
-        }
-        else {
-            return view("home");
-        }
-        
     }
     public function splash()
     {

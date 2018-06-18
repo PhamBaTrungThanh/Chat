@@ -1,9 +1,15 @@
 @extends("layouts.app")
 
 @section('content')
-<section id="display_content" class="is-conversation is-{{$conversation->type}}" data-controller="conversation" data-conversation-post-url="{{route('conversation.message', $conversation)}}">
+<section id="display_content" class="is-conversation is-{{$conversation->type}}" 
+    data-controller="conversation"
+    data-target="chatt.conversation"
+    data-action="newMessage->conversation#newMessage"
+    data-conversation-name="{{$conversation->name}}"
+    data-conversation-post-url="{{route('conversation.message', $conversation)}}" 
+    data-conversation-id="{{$conversation->id}}">
     <header>
-        <p class="title">{{$conversation->name ?: $conversation->other->name}}</p>
+        <p class="title is-size-4-touch level-item">{{$conversation->name}}</p>
     </header>
     <div class="content" data-target="conversation.content">
         @if(count($messages) > 0)

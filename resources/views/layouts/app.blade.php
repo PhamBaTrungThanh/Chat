@@ -10,6 +10,8 @@
 
     <!-- userId -->
     <meta name="user-id" content="{{auth()->user()->id}}">
+    <meta name="user-avatar" content="{{ auth()->user()->avatarUrl }}">
+    <meta name="user-name" content="{{ auth()->user()->name }}">
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
@@ -22,7 +24,7 @@
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
     @stack('headend')
 </head>
-<body data-controller="chatt" data-action="notification->chatt#parseNotification">
+<body data-controller="chatt" data-action="notification->chatt#parseNotification" data-chatt-friend-notifications-count="{{auth()->user()->friendRequestNotifications->count()}}">
     <div id="app">
         <main>
             <div class="content main-content with-sidebar">

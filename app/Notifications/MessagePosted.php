@@ -18,10 +18,12 @@ class MessagePosted extends Notification
      */
     private $message;
     private $creator;
-    public function __construct($message, $creator)
+    private $conversation;
+    public function __construct($conversation, $message, $creator)
     {
         $this->message = $message;
         $this->creator = $creator;
+        $this->conversation = $conversation;
     }
 
     /**
@@ -32,29 +34,21 @@ class MessagePosted extends Notification
      */
     public function via($notifiable)
     {
-        return ['broadcast', 'database'];
+        return ['broadcast'];
     }
-    public function toDatabase()
-    {
-        return [
-            "creator" => [
-                "id" => $this->creator->id,
-                "avatar" => $this->creator->avatar,
-            ],
-            "message" => [
-                "body" => $this->message->body,
-            ],
-        ];
-    }
+
     public function toBroadcast()
     {
         return [
+            "conversation_id" => $this->conversation->id,
+            "conversation_name" => $this->conversation->name,
             "creator" => [
                 "id" => $this->creator->id,
-                "avatar" => $this->creator->avatar,
+                "name" => $this->creator->name,
+                "avatar" => $this->creator->avatarUrl,
             ],
             "message" => [
-                "body" => $this->message->body,
+                "body" => $this->message,
             ],
         ];
     }

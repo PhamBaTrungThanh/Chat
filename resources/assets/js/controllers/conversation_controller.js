@@ -3,7 +3,20 @@ const uuidv1 = require("uuid/v1")
 
 export default class extends Controller {
     static targets = ["chatbox", "content"]
-
+    get conversationId() {
+        return this.data.get("id")
+    }
+    get conversationName() {
+        return this.data.get("name")
+    }
+    initialize() {
+        this.self = {
+            //name: document.querySelector("meta[name='user-name']").content,
+            name: "Bạn",
+            avatar: document.querySelector("meta[name='user-avatar']").content,
+        }
+        this.latestMessage = Object.assign({}, {message: {body: ''}}, {conversation_id: this.conversationId, conversation_name: this.conversationName}, {creator: this.self})
+    }
     connect() {
         this.contentTarget.scrollTop = this.contentTarget.scrollHeight
     }
@@ -24,6 +37,11 @@ export default class extends Controller {
         })
         return string
     }
+    newMessage(event) {
+        this.updateSidebar(event.detail)
+        this.updateConversation(event.detail)
+    }
+    
     sendMessage(event) {
         const uuid = uuidv1(),
             html = this.sanitize(this.chatboxTarget.innerHTML)
@@ -31,13 +49,35 @@ export default class extends Controller {
         axios.post(this.data.get("postUrl"), {
             message: html,
             uuid: uuid,
-        }).catch(result => { 
+        }).then(result => {
+            if (result.status === 200) {
+                this.latestMessage.message.body = html
+                this.updateSidebar(this.latestMessage)
+            }
+        }).catch((result) => {
             let element = document.getElementById(uuid)
             element.classList.add("is-error" ,"hint--top", "hint--error")
             element.setAttribute("aria-label", `Lỗi server!`)
         });
     }
-
+    updateConversation(data) {
+        this.contentTarget.insertAdjacentHTML("beforeend", `<div class="message">${data.message.body}</div>`)
+    }
+    updateSidebar(data) {
+        let element = document.getElementById(`conversation_sidebar__${data.conversation_id}`)
+        if (element) {
+            element.classList.add("unread")
+            element.innerHTML = `
+                <div class="conversation-avatar">
+                    <img src="${data.creator.avatar}" />
+                </div>
+                <div class="inside">
+                    <p class="conversation-title">${data.conversation_name}</p>
+                    <p class="content">${data.creator.name}: ${data.message.body}</p>
+                </div>
+            `;
+        }
+    }
     keypress(event) {
         if (this.chatboxTarget.textContent !== "") {
             this.element.classList.add("ready-to-send")
@@ -56,6 +96,7 @@ export default class extends Controller {
                 else {
                     this.sendMessage()
                     this.element.classList.remove("ready-to-send")
+                    this.contentTarget.scrollTop = this.contentTarget.scrollHeight
                     this.chatboxTarget.innerHTML = ""
                     return false
                 }

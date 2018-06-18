@@ -33,7 +33,15 @@ class Conversation extends Model
         $this->loadMissing("users");
         return $this->users->whereNotIn("id", [auth()->user()->id])->first();
     }
-
+    public function getNameAttribute($name)
+    {
+        if (blank($name)) {
+            if ($this->type ==="single") {
+                return $this->other->name;
+            }
+        }
+        return $name;
+    }
     public function getLatestNotificationAttribute()
     {
         $this->loadMissing("notifications");
