@@ -14,7 +14,7 @@ class AlterTableConversationsAddFieldName extends Migration
     public function up()
     {
         Schema::table('conversations', function (Blueprint $table) {
-            $table->string("name")->nullable();
+            //$table->string("name")->nullable();
         });
     }
 
@@ -26,7 +26,7 @@ class AlterTableConversationsAddFieldName extends Migration
     public function down()
     {
         Schema::table('conversations', function (Blueprint $table) {
-            $table->dropColumn("name");
+            //$table->dropColumn("name");
         });
     }
 }
