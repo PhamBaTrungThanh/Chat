@@ -34,6 +34,3 @@ Route::get("conversation/with/{friend}", "ConversationController@with")->name("c
 Route::get('/search', 'SearchController')->name('search');
 
 Route::get('/', 'HomeController@index')->name('index');
-Route::get('/logout', function () {
-    auth()->logout();
-});
