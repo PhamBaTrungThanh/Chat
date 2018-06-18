@@ -1,4 +1,4 @@
-<div id="sidebar__display" class="conversation-list">
+<div id="sidebar__display" class="conversation-list" data-update-url="{{route('conversation.sidebar', $conversation)}}">
     @if (count($conversation->messages) > 0)
         <a class="conversation-short is-active link-disabled" id="conversation_sidebar__{{$conversation->id}}">
             <div class="conversation-avatar">

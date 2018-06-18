@@ -28,6 +28,7 @@ Route::namespace('User')->group(function() {
     Route::get('/notification/{notification_id}', 'UserController@markRead')->name('user.notification.read');
 });
 Route::post("conversation/{conversation}/message", "ConversationController@message")->name("conversation.message");
+Route::get("conversation/{conversation}/sidebar", "ConversationController@showSidebar")->name("conversation.sidebar");
 Route::resource('conversation', 'ConversationController');
 Route::get("conversation/with/{friend}", "ConversationController@with")->name("conversation.with");
 

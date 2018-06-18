@@ -76,6 +76,11 @@ export default class extends Controller {
                     <p class="content">${data.creator.name}: ${data.message.body}</p>
                 </div>
             `;
+        } else {
+            let sidebar = document.querySelector("#sidebar__display.conversation-list")
+            axios.get(sidebar.dataset.updateUrl).then(response => {
+                sidebar.outerHTML = response.data
+            });
         }
     }
     keypress(event) {

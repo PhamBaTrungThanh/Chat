@@ -32,7 +32,13 @@ class ConversationController extends Controller
         }
 
     }
-    
+    public function showSidebar(Conversation $conversation)
+    {
+        $related = Conversation::latest("updated_at")
+            ->limit(10)
+            ->with(["latestMessage", "latestMessage.user"])->get();
+        return view("conversation.sidebar")->withRelated($related)->withConversation($conversation);            
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -76,39 +82,6 @@ class ConversationController extends Controller
         return view("conversation.show")->withConversation($conversation)->withMessages($messages)->withRelated($related);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Conversation  $conversation
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Conversation $conversation)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Conversation  $conversation
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Conversation $conversation)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Conversation  $conversation
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Conversation $conversation)
-    {
-        //
-    }
     public function message(Conversation $conversation, Request $request)
     {
         if ($conversation->users()->where("id", auth()->user()->id)) {
@@ -119,6 +92,7 @@ class ConversationController extends Controller
                 "body" => $body,
                 "conversation_id" => $conversation->id,
                 "user_id" => auth()->user()->id,
+                "name" => "",
             ]);
             $message->save();
             //$conversation->notify(new ConversationUpdated($message, auth()->user()));
