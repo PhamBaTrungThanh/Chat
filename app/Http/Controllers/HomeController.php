@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Models\Conversation;
 class HomeController extends Controller
 {
     /**
@@ -16,8 +16,14 @@ class HomeController extends Controller
         if (!auth()->user()) {
             return redirect('/splash');
         }
-        auth()->user()->loadMissing("conversations");
-        return view('home');
+        $latest = auth()->user()->conversations()->latest("updated_at")->first();
+        if ($latest) {
+            return redirect()->route("conversation.show", $latest);
+        }
+        else {
+            return view("home");
+        }
+        
     }
     public function splash()
     {

@@ -14,25 +14,23 @@
         <div id="sidebar__menu">
             <a href="{{route('index')}}" class="{{active('conversation.*')}} chat-icon">
                 <span class="icon">
-                    <i class="far fw fa-comment-alt"></i>
+                    <i class="icon-chat"></i>
                 </span>
             </a>
             <a href="{{route('search')}}" class="{{active('search')}}">
                     <span class="icon">
-                        <i class="fas fw fa-search"></i>
+                        <i class="icon-search"></i>
                     </span>                       
                 </a>
             <a href="{{route('user.friend.index')}}" class="{{active('user.friend.*')}}">
-                <span class="icon">
-                    <span class="fa-layers fa-fw" >
-                        <i class="fas fa-user-friends"></i>
-                        <span class="fa-layers-counter overide" data-target="chatt.friendNotification" style="display: {{auth()->user()->friendRequestNotifications->count() === 0 ? "none" : "block"}}">{{auth()->user()->friendRequestNotifications->count()}}</span>
-                    </span>
-                </span>                       
+                <span class="icon with-notification">
+                    <i class="icon-users"></i>
+                    <span class="notification" data-target="chatt.friendNotification" style="display: {{auth()->user()->friendRequestNotifications->count() === 0 ? "none" : "block"}}"></span>
+                </span>                  
             </a>
             <a href="#settings" class="setting-icon {{active('settings.*')}}">
                 <span class="icon">
-                    <i class="fas fw fa-cog"></i>
+                    <i class="icon-cog"></i>
                 </span>                       
             </a>
         </div>

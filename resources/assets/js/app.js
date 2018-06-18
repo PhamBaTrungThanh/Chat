@@ -15,8 +15,4 @@ import animation from './animation'
                 document.body.dispatchEvent(event)
             });
     });
-    // Re-render fontawesome on page reload
-    document.addEventListener("turbolinks:load", () => {
-        FontAwesome.dom.i2svg()
-    })
 })(window)

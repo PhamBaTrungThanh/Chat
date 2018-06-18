@@ -48,9 +48,15 @@
             cursor: pointer;
             user-select: none;
             color: $grey-light;
+            & > .icon > .icon-check:before {
+                content: '\e807';
+            }
         }
         input[type="checkbox"]:checked + label {
             color: darken($primary, 15%);
+            & > .icon > .icon-check:before {
+                content: '\e805';
+            }
         }
         input[type="checkbox"]:not(:checked).is-invalid + label {
             color: $danger;

@@ -2,9 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Notifications\MessagePosted;
+use App\Notifications\ConversationUpdated;
 use App\Models\Conversation;
 use App\Models\User;
+use App\Models\Message;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Notification;
 
 class ConversationController extends Controller
 {
@@ -19,7 +23,8 @@ class ConversationController extends Controller
      */
     public function index()
     {
-        //
+        $latest = auth()->user()->conversations()->latest("updated_at")->first();
+        return redirect()->route("conversation.show", $latest);
     }
     
     /**
@@ -58,7 +63,11 @@ class ConversationController extends Controller
      */
     public function show(Conversation $conversation)
     {
-        return view("conversation.show")->withConversation($conversation);
+        $related = Conversation::latest("updated_at")
+            ->limit(10)
+            ->with(["latestMessage", "latestMessage.user"])->get();
+        $messages = Message::where("conversation_id", $conversation->id)->limit(50)->oldest()->get();
+        return view("conversation.show")->withConversation($conversation)->withMessages($messages)->withRelated($related);
     }
 
     /**
@@ -93,5 +102,21 @@ class ConversationController extends Controller
     public function destroy(Conversation $conversation)
     {
         //
+    }
+    public function message(Conversation $conversation, Request $request)
+    {
+        if ($conversation->users()->where("id", auth()->user()->id)) {
+            $message = new Message;
+            $message->fill([
+                "body" => clean($request->message, array("HTML.Allowed" => "br")),
+                "conversation_id" => $conversation->id,
+                "user_id" => auth()->user()->id,
+            ]);
+            $message->save();
+            //$conversation->notify(new ConversationUpdated($message, auth()->user()));
+            Notification::send($conversation->toOthers(), new MessagePosted($message, auth()->user()));
+        } else {
+            abort(401);
+        }
     }
 }

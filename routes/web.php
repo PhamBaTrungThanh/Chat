@@ -27,8 +27,10 @@ Route::namespace('User')->group(function() {
     Route::resource('user', 'UserController')->except(['index', 'create', 'store']);
     Route::get('/notification/{notification_id}', 'UserController@markRead')->name('user.notification.read');
 });
+Route::post("conversation/{conversation}/message", "ConversationController@message")->name("conversation.message");
 Route::resource('conversation', 'ConversationController');
 Route::get("conversation/with/{friend}", "ConversationController@with")->name("conversation.with");
+
 Route::get('/search', 'SearchController')->name('search');
 
 Route::get('/', 'HomeController@index')->name('index');

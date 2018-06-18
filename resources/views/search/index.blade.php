@@ -14,7 +14,7 @@
                 <button type="submit" class="button has-icon is-medium">
                     <span>@lang("search.button")</span>
                     <span class="icon">
-                        <i class="fas fa-search"></i>
+                        <i class="icon-search"></i>
                     </span>
                 </button>
             </div>

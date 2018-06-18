@@ -3,9 +3,14 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-
+use Illuminate\Notifications\Notifiable;
 class Conversation extends Model
 {
+    use Notifiable;
+    public function latestMessage()
+    {
+        return $this->hasOne(Message::class)->latest();
+    }
     public function messages()
     {
         return $this->hasMany(Message::class);
@@ -27,5 +32,16 @@ class Conversation extends Model
         }
         $this->loadMissing("users");
         return $this->users->whereNotIn("id", [auth()->user()->id])->first();
+    }
+
+    public function getLatestNotificationAttribute()
+    {
+        $this->loadMissing("notifications");
+        return optional($this->notifications)->first();
+    }
+    public function toOthers()
+    {
+        $this->loadMissing("users");
+        return $this->users->whereNotIn("id", [auth()->user()->id])->all();
     }
 }

@@ -15,13 +15,13 @@
                     <div class="control with-icon">
                         <input type="text" class="input {{ $errors->has('email') ? 'is-invalid' : '' }}" name="email" id="email" placeholder="{{ __('Email') }}" value="{{ old('email') }}" required autofocus>
                         <span class="icon">
-                            <i class="fas fa-user-circle"></i>
+                            <i class="icon-user"></i>
                         </span>
                     </div>
                     <div class="control with-icon">
                         <input type="password" class="input {{ $errors->has('password') ? 'is-invalid' : '' }}" name="password" id="password" placeholder="{{ __('Mật khẩu') }}" required>
                         <span class="icon">
-                            <i class="fas fa-key"></i>
+                            <i class="icon-key"></i>
                         </span>
                     </div>
                     @if ($errors->has('email'))

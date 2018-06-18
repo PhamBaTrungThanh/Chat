@@ -1,0 +1,22 @@
+
+
+// Default color is blackish
+$hintDefaultColor: $dark;
+
+// Error color
+$hintErrorColor: $danger;
+
+// Warning color
+$hintWarningColor: $warning;
+
+// Info Color
+$hintInfoColor: $info;
+// Success Color
+$hintSuccessColor: $success;
+
+$hintShowDelay: 0;
+$hintTransitionDuration: 0.15s;
+$hintTextShadowDarkenAmount: 0;
+$hintFontFamily: $family-sans-serif;
+$hintFontSize: 14px;
+@import "node_modules/hint.css/src/hint";
