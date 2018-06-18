@@ -1,5 +1,5 @@
 <div id="sidebar__display" class="conversation-list">
-    @if ($conversation)
+    @if (count($conversation->messages) > 0)
         <a class="conversation-short is-active link-disabled" id="conversation_sidebar__{{$conversation->id}}">
             <div class="conversation-avatar">
                 <img src="{{$conversation->latestMessage->user->avatarUrl}}" />
